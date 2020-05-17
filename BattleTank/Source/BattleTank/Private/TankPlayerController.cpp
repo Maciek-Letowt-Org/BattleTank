@@ -31,7 +31,6 @@ void ATankPlayerController::AimTowardsCrosshair()
     if (!GetControlledTank()) return;
     FVector HitLocation;
     if (!GetSightRayHitLocation(HitLocation)) return;
-    UE_LOG(LogTemp, Warning, TEXT("%s is aiming towards %s."), *GetControlledTank()->GetName(), *HitLocation.ToString())
     // aim towards HitLocation
 }
 
@@ -40,9 +39,19 @@ ATank* ATankPlayerController::GetControlledTank() const
     return Cast<ATank>(GetPawn());
 }
 
-bool ATankPlayerController::GetSightRayHitLocation(FVector &OutHitLocation) const
+bool ATankPlayerController::GetSightRayHitLocation(FVector& OutHitLocation) const
 {
-    // ray cast from TankPlayerUI.AimPoint to World
+    // find crosshair position in pixel coordinates
+    int32 OutViewPortSizeX, OutViewPortSizeY;
+    GetViewportSize(OutViewPortSizeX, OutViewPortSizeY);
+    if (OutViewPortSizeX == 0 || OutViewPortSizeY == 0) return false;
+    // "De-Project" the screen position of the TankPlayerUI.AimPoint to a World direction
+    FVector2D ScreenLocation = FVector2D(CrossHairXLocation * OutViewPortSizeX, CrossHairYLocation * OutViewPortSizeY);
+    
+
+    // 
+    // ray cast in "look direction" from TankPlayerUI.AimPoint to World
+    // see what is hit up to max. range
     // if there is no Hit, return false
     // else set HitLocation and return true
     OutHitLocation = FVector(1.0);
