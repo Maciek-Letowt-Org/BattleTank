@@ -17,7 +17,19 @@ void ATankPlayerController::BeginPlay()
     else
     {
         UE_LOG(LogTemp, Warning, TEXT("tank player controller has no tank!"))
-   }
+    }
+}
+
+void ATankPlayerController::Tick(const float DeltaSeconds)
+{
+    Super::Tick(DeltaSeconds);
+    AimTowardsCrosshair();
+}
+
+void ATankPlayerController::AimTowardsCrosshair()
+{
+    if (!GetControlledTank()) return;
+    //UE_LOG(LogTemp, Warning, TEXT("%s is aiming towards crosshair."), *GetControlledTank()->GetName())
 }
 
 ATank* ATankPlayerController::GetControlledTank() const

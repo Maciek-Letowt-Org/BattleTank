@@ -2,15 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7dce812d-bdad-4534-a70e-ef33f7da05c9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.BattleTank/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BattleTank/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BattleTank/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BattleTank/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BattleTank.uproject" beforeDir="false" afterPath="$PROJECT_DIR$/BattleTank.uproject" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Maps/BattleGround.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/BattleGround.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Ui/UI_TankPlayer.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Ui/UI_TankPlayer.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Vehicles/BP_Tank.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Vehicles/BP_Tank.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Saved/AutoScreenshot.png" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/AutoScreenshot.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Saved/Config/Windows/EditorPerProjectUserSettings.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/Config/Windows/EditorPerProjectUserSettings.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Saved/Config/Windows/Engine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/Config/Windows/Engine.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/BattleTank/Private/TankPlayerController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BattleTank/Private/TankPlayerController.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/BattleTank/Public/TankPlayerController.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BattleTank/Public/TankPlayerController.h" afterDir="false" />
     </list>
@@ -39,9 +34,9 @@
         <option value="$PROJECT_DIR$/Source/BattleTank/Private/TankPlayerUI.cpp" />
         <option value="$PROJECT_DIR$/Source/BattleTank/Public/TankPlayerUI.h" />
         <option value="$PROJECT_DIR$/Source/BattleTank/Public/TankAIController.h" />
-        <option value="$PROJECT_DIR$/Source/BattleTank/Private/TankPlayerController.cpp" />
-        <option value="$PROJECT_DIR$/Source/BattleTank/Public/TankPlayerController.h" />
         <option value="$PROJECT_DIR$/Source/BattleTank/Private/TankAIController.cpp" />
+        <option value="$PROJECT_DIR$/Source/BattleTank/Public/TankPlayerController.h" />
+        <option value="$PROJECT_DIR$/Source/BattleTank/Private/TankPlayerController.cpp" />
       </list>
     </option>
   </component>
