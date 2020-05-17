@@ -29,10 +29,22 @@ void ATankPlayerController::Tick(const float DeltaSeconds)
 void ATankPlayerController::AimTowardsCrosshair()
 {
     if (!GetControlledTank()) return;
-    //UE_LOG(LogTemp, Warning, TEXT("%s is aiming towards crosshair."), *GetControlledTank()->GetName())
+    FVector HitLocation;
+    if (!GetSightRayHitLocation(HitLocation)) return;
+    UE_LOG(LogTemp, Warning, TEXT("%s is aiming towards %s."), *GetControlledTank()->GetName(), *HitLocation.ToString())
+    // aim towards HitLocation
 }
 
 ATank* ATankPlayerController::GetControlledTank() const
 {
     return Cast<ATank>(GetPawn());
+}
+
+bool ATankPlayerController::GetSightRayHitLocation(FVector &OutHitLocation) const
+{
+    // ray cast from TankPlayerUI.AimPoint to World
+    // if there is no Hit, return false
+    // else set HitLocation and return true
+    OutHitLocation = FVector(1.0);
+    return true;
 }
