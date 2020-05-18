@@ -2,6 +2,8 @@
 
 
 #include "TankPlayerController.h"
+#include "CollisionQueryParams.h"
+#include "Engine/World.h"
 
 // Called when the game starts or when spawned
 void ATankPlayerController::BeginPlay()
@@ -31,6 +33,8 @@ void ATankPlayerController::AimTowardsCrosshair()
     if (!GetControlledTank()) return;
     FVector HitLocation;
     if (!GetSightRayHitLocation(HitLocation)) return;
+    UE_LOG(LogTemp, Warning, TEXT("tank player controller is aiming at %s."), *HitLocation.ToString());
+
     // aim towards HitLocation
 }
 
@@ -39,21 +43,65 @@ ATank* ATankPlayerController::GetControlledTank() const
     return Cast<ATank>(GetPawn());
 }
 
+bool ATankPlayerController::GetLookDirection(const FVector2D ScreenLocation, FVector& OutWorldDirection) const
+{
+    FVector OutCameraLocation;
+
+    return DeprojectScreenPositionToWorld
+    (
+        ScreenLocation.X,
+        ScreenLocation.Y,
+        OutCameraLocation,
+        OutWorldDirection
+    );
+}
+
 bool ATankPlayerController::GetSightRayHitLocation(FVector& OutHitLocation) const
 {
     // find crosshair position in pixel coordinates
     int32 OutViewPortSizeX, OutViewPortSizeY;
     GetViewportSize(OutViewPortSizeX, OutViewPortSizeY);
     if (OutViewPortSizeX == 0 || OutViewPortSizeY == 0) return false;
-    // "De-Project" the screen position of the TankPlayerUI.AimPoint to a World direction
-    FVector2D ScreenLocation = FVector2D(CrossHairXLocation * OutViewPortSizeX, CrossHairYLocation * OutViewPortSizeY);
-    
 
-    // 
+    // "De-Project" the screen position of the TankPlayerUI.AimPoint to a World direction
+    const FVector2D ScreenLocation = FVector2D(CrossHairXLocation * OutViewPortSizeX,
+                                               CrossHairYLocation * OutViewPortSizeY);
+    FVector OutWorldDirection;
+    if (!GetLookDirection(ScreenLocation, OutWorldDirection)) return false;
+
     // ray cast in "look direction" from TankPlayerUI.AimPoint to World
-    // see what is hit up to max. range
     // if there is no Hit, return false
-    // else set HitLocation and return true
-    OutHitLocation = FVector(1.0);
-    return true;
+    if (GetLookVectorHitLocation(OutWorldDirection, OutHitLocation)) return true;
+
+    return false;
+}
+
+bool ATankPlayerController::GetLookVectorHitLocation(FVector& LookDirection, FVector& OutHitLocation) const
+{
+    // collision query parameters: defaultName, don't go through glass, ignore self
+    const FCollisionQueryParams CollisionQueryParams(
+        FName(TEXT("")),
+        false,
+        GetControlledTank()
+    );
+    FHitResult OutHitResult;
+    FVector StartLocation = PlayerCameraManager->GetCameraLocation();
+    FVector EndLocation = StartLocation + (LookDirection * LineTraceRange);
+    
+    // see what is hit up to max. range
+    const bool bHit = GetWorld()->LineTraceSingleByChannel(
+        OutHitResult,
+        StartLocation,
+        EndLocation,
+        ECollisionChannel::ECC_Visibility,
+        CollisionQueryParams,
+        FCollisionResponseParams::DefaultResponseParam
+    );
+    if (bHit)
+    {
+        // set HitLocation and return true
+        OutHitLocation = OutHitResult.Location;
+        return true;
+    }
+    return false;
 }
