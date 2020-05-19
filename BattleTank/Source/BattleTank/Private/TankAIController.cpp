@@ -6,6 +6,8 @@
 #include "Tank.h"
 
 // Called when the game starts or when spawned
+
+
 void ATankAIController::BeginPlay()
 {
     Super::BeginPlay();
@@ -19,13 +21,36 @@ void ATankAIController::BeginPlay()
     else
     {
         UE_LOG(LogTemp, Warning, TEXT("ai controller cannot find player tank!"))
-   }
+    }
+}
+
+void ATankAIController::Tick(const float DeltaSeconds)
+{
+    Super::Tick(DeltaSeconds);
+
+    if (GetPlayerTank())
+    {
+        //todo move towards player
+        
+        AimTowardsPlayer();
+
+        //todo fire if ready
+    }
+}
+
+void ATankAIController::AimTowardsPlayer() const
+{
+    const FVector HitLocation = GetPlayerTank()->GetActorLocation();
+
+    // aim towards HitLocation
+    GetControlledTank()->AimAt(HitLocation);
 }
 
 ATank* ATankAIController::GetControlledTank() const
 {
     return Cast<ATank>(GetPawn());
 }
+
 ATank* ATankAIController::GetPlayerTank() const
 {
     APlayerController* Controller = GetWorld()->GetFirstPlayerController();
@@ -34,4 +59,3 @@ ATank* ATankAIController::GetPlayerTank() const
     if (!Pawn) return nullptr;
     return Cast<ATank>(Pawn);
 }
-

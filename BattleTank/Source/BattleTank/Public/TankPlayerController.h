@@ -21,9 +21,9 @@ private:
 
 
     // move barrel towards position where a shot would hit where crosshair intersects world
-    void AimTowardsCrosshair();
+    void AimTowardsCrosshair() const;
     ATank* GetControlledTank() const;
-    bool GetLookDirection(FVector2D ScreenLocation, FVector& OutWorldDirection) const;
+    bool GetLookDirection(FVector2D ScreenLocation, FVector& OutLookDirection) const;
     bool GetSightRayHitLocation(FVector& OutHitLocation) const;
     bool GetLookVectorHitLocation(FVector& LookFrom, FVector& HitLocation) const;
     UPROPERTY(EditAnywhere)
