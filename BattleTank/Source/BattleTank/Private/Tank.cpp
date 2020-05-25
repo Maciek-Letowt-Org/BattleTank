@@ -14,9 +14,8 @@ ATank::ATank()
     TankAimingComponent = CreateDefaultSubobject<UTankAimingComponent>(FName("AimingComponent"));
 }
 
-void ATank::SetBarrelReference(UStaticMeshComponent* BarrelToSet)
+void ATank::SetBarrelReference(UStaticMeshComponent* BarrelToSet) const
 {
-    Barrel = BarrelToSet;
     TankAimingComponent->SetBarrelReference(BarrelToSet);
 }
 
@@ -27,7 +26,7 @@ void ATank::BeginPlay()
 }
 
 // Called every frame
-void ATank::Tick(float DeltaTime)
+void ATank::Tick(const float DeltaTime)
 {
     Super::Tick(DeltaTime);
 }
@@ -38,7 +37,7 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
     Super::SetupPlayerInputComponent(PlayerInputComponent);
 }
 
-void ATank::AimAt(FVector HitLocation) const
+void ATank::AimAt(const FVector HitLocation) const
 {
-    TankAimingComponent->AimAt(HitLocation);
+    TankAimingComponent->AimAt(HitLocation, LaunchSpeed);
 }

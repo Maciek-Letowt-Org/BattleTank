@@ -27,7 +27,7 @@ private:
                                FActorComponentTickFunction* ThisTickFunction) override;
 
 public:
-    void AimAt(FVector HitLocation) const;
+    void AimAt(const FVector HitLocation, float LaunchSpeed) const;
 private:
     UStaticMeshComponent* Barrel = nullptr;
 };

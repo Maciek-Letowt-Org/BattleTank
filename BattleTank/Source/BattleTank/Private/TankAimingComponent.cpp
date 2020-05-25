@@ -2,6 +2,7 @@
 
 
 #include "TankAimingComponent.h"
+#include "Kismet/GameplayStatics.h"
 #include "Public/TankAimingComponent.h"
 
 // Sets default values for this component's properties
@@ -30,17 +31,36 @@ void UTankAimingComponent::BeginPlay()
 
 
 // Called every frame
-void UTankAimingComponent::TickComponent(float DeltaTime, ELevelTick TickType,
+void UTankAimingComponent::TickComponent(const float DeltaTime, const ELevelTick TickType,
                                          FActorComponentTickFunction* ThisTickFunction)
 {
     Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
     // ...
 }
 
-void UTankAimingComponent::AimAt(FVector HitLocation) const
+void UTankAimingComponent::AimAt(const FVector HitLocation, const float LaunchSpeed) const
 {
+    if (!Barrel) return;
+
+    bool bIsInRange = false;
+    const FVector StartLocation = Barrel->GetSocketLocation(FName("Projectile"));
+    FVector OutLaunchVelocity;
+
+    bIsInRange = UGameplayStatics::SuggestProjectileVelocity(
+        this,
+        OutLaunchVelocity,
+        StartLocation,
+        HitLocation,
+        LaunchSpeed,
+        false,
+        0,
+        0,
+        ESuggestProjVelocityTraceOption::DoNotTrace
+    );
+
+    if (!bIsInRange) return;
+
+    const auto AimDirection = OutLaunchVelocity.GetSafeNormal();
     const auto TankName = GetOwner()->GetName();
-    const auto TankPos = Barrel->GetComponentLocation().ToString();
-    const auto Target = HitLocation.ToString();
-    UE_LOG(LogTemp, Warning, TEXT("%s is aiming at %s from %s."), *TankName, *Target,*TankPos);
+    UE_LOG(LogTemp, Warning, TEXT("%s aiming at %s."), *TankName, *AimDirection.ToString());
 }
