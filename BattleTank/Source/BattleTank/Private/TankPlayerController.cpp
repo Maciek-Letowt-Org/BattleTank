@@ -1,9 +1,8 @@
 // copyright Maciek Letowt 2020
-
-
 #include "TankPlayerController.h"
 #include "CollisionQueryParams.h"
 #include "Engine/World.h"
+#include "Tank.h"
 
 // Called when the game starts or when spawned
 void ATankPlayerController::BeginPlay()
@@ -33,7 +32,7 @@ void ATankPlayerController::AimTowardsCrosshair() const
     if (!GetControlledTank()) return;
     FVector HitLocation;
     if (!GetSightRayHitLocation(HitLocation)) return;
-    
+
     // aim towards HitLocation
     GetControlledTank()->AimAt(HitLocation);
 }

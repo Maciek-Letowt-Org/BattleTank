@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "AIController.h"
-#include "Tank.h"
 #include "TankAIController.generated.h"
 
 /**
@@ -21,7 +20,7 @@ private:
     // Called every frame
     virtual void Tick(const float DeltaSeconds) override;
     
-    ATank* GetControlledTank() const;
-    ATank* GetPlayerTank() const;
+    class ATank* GetControlledTank() const;
+    class ATank* GetPlayerTank() const;
     void AimTowardsPlayer() const;
 };

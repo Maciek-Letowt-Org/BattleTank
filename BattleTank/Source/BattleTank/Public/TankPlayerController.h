@@ -1,9 +1,6 @@
 // copyright Maciek Letowt 2020
-
 #pragma once
-
 #include "CoreMinimal.h"
-#include "Tank.h"
 #include "GameFramework/PlayerController.h"
 #include "TankPlayerController.generated.h"
 /**
@@ -22,7 +19,7 @@ private:
 
     // move barrel towards position where a shot would hit where crosshair intersects world
     void AimTowardsCrosshair() const;
-    ATank* GetControlledTank() const;
+    class ATank* GetControlledTank() const;
     bool GetLookDirection(FVector2D ScreenLocation, FVector& OutLookDirection) const;
     bool GetSightRayHitLocation(FVector& OutHitLocation) const;
     bool GetLookVectorHitLocation(FVector& LookFrom, FVector& HitLocation) const;

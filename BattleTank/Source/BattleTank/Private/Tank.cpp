@@ -3,6 +3,8 @@
 
 #include "Tank.h"
 #include "GameFramework/Pawn.h"
+#include "TankAimingComponent.h"
+
 
 // Sets default values
 ATank::ATank()

@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Blueprint/UserWidget.h"
+#include "UMG/Public/Blueprint/UserWidget.h"
 #include "TankPlayerUI.generated.h"
 
 /**
