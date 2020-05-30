@@ -21,46 +21,44 @@ void UTankAimingComponent::SetBarrelReference(UStaticMeshComponent* BarrelToSet)
 }
 
 
-// Called when the game starts
-void UTankAimingComponent::BeginPlay()
-{
-    Super::BeginPlay();
-
-    // ...
-}
-
-
-// Called every frame
-void UTankAimingComponent::TickComponent(const float DeltaTime, const ELevelTick TickType,
-                                         FActorComponentTickFunction* ThisTickFunction)
-{
-    Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-    // ...
-}
-
-void UTankAimingComponent::AimAt(const FVector HitLocation, const float LaunchSpeed) const
+void UTankAimingComponent::AimAt(const FVector HitLocation, const float LaunchSpeed)
 {
     if (!Barrel) return;
 
-    bool bIsInRange = false;
     const FVector StartLocation = Barrel->GetSocketLocation(FName("Projectile"));
     FVector OutLaunchVelocity;
 
-    bIsInRange = UGameplayStatics::SuggestProjectileVelocity(
+    const bool bHaveAimSolution = UGameplayStatics::SuggestProjectileVelocity(
         this,
         OutLaunchVelocity,
         StartLocation,
         HitLocation,
         LaunchSpeed,
-        false,
-        0,
-        0,
         ESuggestProjVelocityTraceOption::DoNotTrace
     );
 
-    if (!bIsInRange) return;
+    if (!bHaveAimSolution) return;
 
     const auto AimDirection = OutLaunchVelocity.GetSafeNormal();
+    MoveBarrelTowards(AimDirection);
+}
+
+void UTankAimingComponent::MoveBarrelTowards(const FVector AimDirection)
+{
+    // work out difference between current barrel rotation & aim direction
+    auto BarrelRtt = Barrel->GetForwardVector().Rotation();
+    auto AimRtt = AimDirection.Rotation();
     const auto TankName = GetOwner()->GetName();
-    UE_LOG(LogTemp, Warning, TEXT("%s aiming at %s."), *TankName, *AimDirection.ToString());
+    UE_LOG(LogTemp, Warning, TEXT("%s wants to aim in %s direction, but barrel is stuck at %s."), *TankName,
+           *AimRtt.ToString(), *BarrelRtt.ToString());
+
+    auto DeltaRtt = AimRtt - BarrelRtt;
+
+    // move the barrel the right amount this frame, give:
+    // max elevation speed, frame time
+    
+    
+    // get rotation from out launch v
+    // start moving y-rot of barrel to y-rot of launch v
+    // start moving z-rot of turret to z-rot of launch v
 }
