@@ -34,7 +34,10 @@ void UTankAimingComponent::AimAt(const FVector HitLocation, const float LaunchSp
         StartLocation,
         HitLocation,
         LaunchSpeed,
-        ESuggestProjVelocityTraceOption::DoNotTrace
+        false,
+        0.f,
+        0.f,
+        ESuggestProjVelocityTraceOption::DoNotTrace // parameter must be present to work around bug in UE4.25
     );
 
     if (!bHaveAimSolution)
@@ -42,7 +45,7 @@ void UTankAimingComponent::AimAt(const FVector HitLocation, const float LaunchSp
         const auto TankName = GetOwner()->GetName();
         const auto Time = GetWorld()->GetTimeSeconds();
         UE_LOG(LogTemp, Warning, TEXT("%f: %s cannot find aim solution."), Time, *TankName);
-       return; 
+        return;
     }
 
     const auto TankName = GetOwner()->GetName();

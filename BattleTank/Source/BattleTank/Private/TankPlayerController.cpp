@@ -57,11 +57,8 @@ bool ATankPlayerController::GetSightRayHitLocation(FVector& OutHitLocation) cons
     FVector OutLookDirection;
     if (!GetLookDirection(ScreenLocation, OutLookDirection)) return false;
 
-    // ray cast in "look direction" from camera to World
-    if (GetLookVectorHitLocation(OutLookDirection, OutHitLocation)) return true;
-
-    // if there is no Hit, return false
-    return false;
+    // return result from ray cast in "look direction" from camera to World
+    return GetLookVectorHitLocation(OutLookDirection, OutHitLocation);
 }
 
 bool ATankPlayerController::GetLookDirection(const FVector2D ScreenLocation, FVector& OutLookDirection) const
