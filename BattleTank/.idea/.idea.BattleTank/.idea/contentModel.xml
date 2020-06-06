@@ -43272,6 +43272,7 @@
             <e p="Tank.cpp" t="Include" />
             <e p="TankAIController.cpp" t="Include" />
             <e p="TankAimingComponent.cpp" t="Include" />
+            <e p="TankBarrel.cpp" t="Include" />
             <e p="TankPlayerController.cpp" t="Include" />
             <e p="TankPlayerUI.cpp" t="Include" />
           </e>
@@ -43279,6 +43280,7 @@
             <e p="Tank.h" t="Include" />
             <e p="TankAIController.h" t="Include" />
             <e p="TankAimingComponent.h" t="Include" />
+            <e p="TankBarrel.h" t="Include" />
             <e p="TankPlayerController.h" t="Include" />
             <e p="TankPlayerUI.h" t="Include" />
           </e>

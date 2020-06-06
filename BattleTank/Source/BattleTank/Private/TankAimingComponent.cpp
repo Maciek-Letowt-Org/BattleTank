@@ -3,6 +3,7 @@
 
 #include "TankAimingComponent.h"
 #include "Kismet/GameplayStatics.h"
+#include "TankBarrel.h"
 
 // Sets default values for this component's properties
 UTankAimingComponent::UTankAimingComponent()
@@ -14,13 +15,13 @@ UTankAimingComponent::UTankAimingComponent()
     // ...
 }
 
-void UTankAimingComponent::SetBarrelReference(UStaticMeshComponent* BarrelToSet)
+void UTankAimingComponent::SetBarrelReference(UTankBarrel* BarrelToSet)
 {
     Barrel = BarrelToSet;
 }
 
 
-void UTankAimingComponent::AimAt(const FVector HitLocation, const float LaunchSpeed)
+void UTankAimingComponent::AimAt(const FVector HitLocation, const float LaunchSpeed) const
 {
     if (!Barrel) return;
 
@@ -36,28 +37,28 @@ void UTankAimingComponent::AimAt(const FVector HitLocation, const float LaunchSp
         ESuggestProjVelocityTraceOption::DoNotTrace
     );
 
-    if (!bHaveAimSolution) return;
+    if (!bHaveAimSolution)
+    {
+        const auto TankName = GetOwner()->GetName();
+        const auto Time = GetWorld()->GetTimeSeconds();
+        UE_LOG(LogTemp, Warning, TEXT("%f: %s cannot find aim solution."), Time, *TankName);
+       return; 
+    }
+
+    const auto TankName = GetOwner()->GetName();
+    const auto Time = GetWorld()->GetTimeSeconds();
+    UE_LOG(LogTemp, Warning, TEXT("%f: %s wants to elevate barrel."), Time, *TankName);
 
     const auto AimDirection = OutLaunchVelocity.GetSafeNormal();
     MoveBarrelTowards(AimDirection);
 }
 
-void UTankAimingComponent::MoveBarrelTowards(const FVector AimDirection)
+void UTankAimingComponent::MoveBarrelTowards(const FVector AimDirection) const
 {
     // work out difference between current barrel rotation & aim direction
     auto BarrelRtt = Barrel->GetForwardVector().Rotation();
     auto AimRtt = AimDirection.Rotation();
-    const auto TankName = GetOwner()->GetName();
-    UE_LOG(LogTemp, Warning, TEXT("%s wants to aim in %s direction, but barrel is stuck at %s."), *TankName,
-           *AimRtt.ToString(), *BarrelRtt.ToString());
 
     auto DeltaRtt = AimRtt - BarrelRtt;
-
-    // move the barrel the right amount this frame, give:
-    // max elevation speed, frame time
-    
-    
-    // get rotation from out launch v
-    // start moving y-rot of barrel to y-rot of launch v
-    // start moving z-rot of turret to z-rot of launch v
+    Barrel->Elevate(5); // TODO remove constant
 }

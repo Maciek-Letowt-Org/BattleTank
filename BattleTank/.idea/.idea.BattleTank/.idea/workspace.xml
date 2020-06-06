@@ -20,15 +20,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7dce812d-bdad-4534-a70e-ef33f7da05c9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.BattleTank/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BattleTank/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BattleTank/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BattleTank/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/BattleGround.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/BattleGround.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Vehicles/BP_Tank.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Vehicles/BP_Tank.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Saved/AutoScreenshot.png" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/AutoScreenshot.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Saved/Autosaves/PackageRestoreData.json" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/Autosaves/PackageRestoreData.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Saved/Config/Windows/Editor.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/Config/Windows/Editor.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Saved/Config/Windows/EditorPerProjectUserSettings.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/Config/Windows/EditorPerProjectUserSettings.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/BattleTank/Private/Tank.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BattleTank/Private/Tank.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/BattleTank/Private/TankAimingComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BattleTank/Private/TankAimingComponent.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/BattleTank/Private/TankPlayerController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BattleTank/Private/TankPlayerController.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/BattleTank/Public/Tank.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BattleTank/Public/Tank.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/BattleTank/Public/TankAIController.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BattleTank/Public/TankAIController.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/BattleTank/Public/TankPlayerController.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BattleTank/Public/TankPlayerController.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/BattleTank/Public/TankPlayerUI.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BattleTank/Public/TankPlayerUI.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/BattleTank/Public/TankAimingComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BattleTank/Public/TankAimingComponent.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,11 +49,13 @@
     <setting file="file://$PROJECT_DIR$/Source/BattleTank/Private/TankPlayerUI.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/BattleTank/Public/TankPlayerUI.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://C:/Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Private/Components/ActorComponent.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/BattleTank/Private/TankBarrel.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/BattleTank/Private/TankAimingComponent.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/BattleTank/Public/TankAimingComponent.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/BattleTank/Public/TankPlayerController.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://C:/Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/Engine/Classes/Components/ActorComponent.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/BattleTank/Private/TankPlayerController.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/BattleTank/Public/TankBarrel.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://C:/Program Files/Epic Games/UE_4.25/Engine/Source/Runtime/UMG/Public/Blueprint/UserWidget.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/BattleTank/Private/Tank.cpp" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -58,14 +64,16 @@
       <list>
         <option value="$PROJECT_DIR$/Source/BattleTank/Private/TankPlayerUI.cpp" />
         <option value="$PROJECT_DIR$/Source/BattleTank/Private/TankAIController.cpp" />
-        <option value="$PROJECT_DIR$/Source/BattleTank/Public/TankAimingComponent.h" />
         <option value="$PROJECT_DIR$/Source/BattleTank/Public/TankPlayerController.h" />
         <option value="$PROJECT_DIR$/Source/BattleTank/Public/TankPlayerUI.h" />
-        <option value="$PROJECT_DIR$/Source/BattleTank/Private/TankAimingComponent.cpp" />
         <option value="$PROJECT_DIR$/Source/BattleTank/Public/TankAIController.h" />
-        <option value="$PROJECT_DIR$/Source/BattleTank/Public/Tank.h" />
-        <option value="$PROJECT_DIR$/Source/BattleTank/Private/Tank.cpp" />
+        <option value="$PROJECT_DIR$/Source/BattleTank/Public/TankAimingComponent.h" />
         <option value="$PROJECT_DIR$/Source/BattleTank/Private/TankPlayerController.cpp" />
+        <option value="$PROJECT_DIR$/Source/BattleTank/Public/TankBarrel.h" />
+        <option value="$PROJECT_DIR$/Source/BattleTank/Private/Tank.cpp" />
+        <option value="$PROJECT_DIR$/Source/BattleTank/Public/Tank.h" />
+        <option value="$PROJECT_DIR$/Source/BattleTank/Private/TankBarrel.cpp" />
+        <option value="$PROJECT_DIR$/Source/BattleTank/Private/TankAimingComponent.cpp" />
       </list>
     </option>
   </component>
@@ -79,7 +87,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Rainbow Brackets" />
+    <property name="settings.editor.selected.configurable" value="com.github.izhangzhihao.rainbow.brackets.settings.RainbowConfigurable" />
   </component>
   <component name="RunManager">
     <configuration name="BattleTank" type="CppProject" factoryName="C++ Project">
@@ -261,10 +269,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="732" y="93" key="RiderGenerateDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1590004246455" />
-    <state x="461" y="165" width="1366" height="710" key="SettingsEditor" timestamp="1589830825314">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="-1459" y="165" width="1366" height="710" key="SettingsEditor" timestamp="1591388499610">
+      <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="-1459" y="165" width="1366" height="710" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1589663085446" />
+    <state x="-1459" y="165" width="1366" height="710" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1591388499610" />
     <state x="461" y="165" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1589830825314" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1589316979872">
       <screen x="0" y="0" width="1920" height="1040" />
