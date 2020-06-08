@@ -3,14 +3,14 @@
 
 #include "TankBarrel.h"
 
-void UTankBarrel::Elevate(const float RelativeSpeed)
+void UTankBarrel::Elevate(float RelativeSpeed)
 {
-
+    RelativeSpeed = FMath::Clamp<float>(RelativeSpeed, -1, +1);
     // move the barrel the right amount this frame, give:
     // max elevation speed, frame time
-    
-    
-    // get rotation from out launch v
-    // start moving y-rot of barrel to y-rot of launch v
-    // start moving z-rot of turret to z-rot of launch v
-};
+    const float ElevationChange = RelativeSpeed * MaxDegreesPerSecond * GetWorld()->DeltaTimeSeconds;
+    const float RawNewElevation = GetRelativeRotation().Pitch + ElevationChange;
+    const float ClampedNewElevation = FMath::Clamp<float>(RawNewElevation, MinElevationDegrees, MaxElevationDegrees);
+
+    SetRelativeRotation(FRotator(ClampedNewElevation, 0.f, 0.f));
+ };
