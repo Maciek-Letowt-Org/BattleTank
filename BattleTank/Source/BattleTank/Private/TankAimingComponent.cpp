@@ -4,6 +4,7 @@
 #include "TankAimingComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "TankBarrel.h"
+#include "TankTurret.h"
 
 // Sets default values for this component's properties
 UTankAimingComponent::UTankAimingComponent()
@@ -18,6 +19,11 @@ UTankAimingComponent::UTankAimingComponent()
 void UTankAimingComponent::SetBarrelReference(UTankBarrel* BarrelToSet)
 {
     Barrel = BarrelToSet;
+}
+
+void UTankAimingComponent::SetTurretReference(UTankTurret* TurretToSet)
+{
+    Turret = TurretToSet;
 }
 
 
@@ -52,16 +58,27 @@ void UTankAimingComponent::AimAt(const FVector HitLocation, const float LaunchSp
     const auto Time = GetWorld()->GetTimeSeconds();
     UE_LOG(LogTemp, Warning, TEXT("%f: %s wants to elevate barrel."), Time, *TankName);
 
-    const auto AimDirection = OutLaunchVelocity.GetSafeNormal();
-    MoveBarrelTowards(AimDirection);
+    const FVector AimDirection = OutLaunchVelocity.GetSafeNormal();
+    const FRotator AimRtt = AimDirection.Rotation();
+
+    MoveBarrelTowards(AimRtt);
+    MoveTurretTowards(AimRtt);
 }
 
-void UTankAimingComponent::MoveBarrelTowards(const FVector AimDirection) const
+void UTankAimingComponent::MoveBarrelTowards(const FRotator AimRtt) const
 {
     // work out rotation difference between current barrel rotation & aim direction rotation
     const FRotator BarrelRtt = Barrel->GetForwardVector().Rotation();
-    const FRotator AimRtt = AimDirection.Rotation();
     const FRotator DeltaRtt = AimRtt - BarrelRtt;
 
-    Barrel->Elevate(DeltaRtt.Pitch); 
+    Barrel->Elevate(DeltaRtt.Pitch);
+}
+
+void UTankAimingComponent::MoveTurretTowards(const FRotator AimRtt) const
+{
+    // work out rotation difference between current turret rotation & aim direction rotation
+    const FRotator TurretRtt = Turret->GetForwardVector().Rotation();
+    const FRotator DeltaRtt = AimRtt - TurretRtt;
+
+    Turret->Rotate(DeltaRtt.Yaw);
 }
