@@ -30,6 +30,7 @@ void UTankAimingComponent::SetTurretReference(UTankTurret* TurretToSet)
 void UTankAimingComponent::AimAt(const FVector HitLocation, const float LaunchSpeed) const
 {
     if (!Barrel) return;
+    if (!Turret) return;
 
     const FVector StartLocation = Barrel->GetSocketLocation(FName("Projectile"));
     FVector OutLaunchVelocity;

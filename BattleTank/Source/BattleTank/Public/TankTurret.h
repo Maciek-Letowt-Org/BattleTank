@@ -9,7 +9,7 @@
 /**
  * UStaticMeshComponent rotation of tank turret 
  */
-UCLASS( meta=(BlueprintSpawnableComponent) )
+UCLASS( meta=(BlueprintSpawnableComponent), HideCategories=("Collision") )
 class BATTLETANK_API UTankTurret : public UStaticMeshComponent
 {
 	GENERATED_BODY()
