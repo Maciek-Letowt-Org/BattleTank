@@ -11,7 +11,7 @@ class UTankTurret; // Forward Declaration instead of include
 * UActorComponent holds turret & barrel parameters 
 */
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
-class BATTLETANK_API UTankAimingComponent : public UActorComponent
+class BATTLETANK_API UTankAimingComponent final : public UActorComponent
 {
     GENERATED_BODY()
 

@@ -7,7 +7,7 @@
  * 
  */
 UCLASS()
-class BATTLETANK_API ATankPlayerController : public APlayerController
+class BATTLETANK_API ATankPlayerController final : public APlayerController
 {
     GENERATED_BODY()
 private:
@@ -22,7 +22,7 @@ private:
     class ATank* GetControlledTank() const;
     bool GetLookDirection(FVector2D ScreenLocation, FVector& OutLookDirection) const;
     bool GetSightRayHitLocation(FVector& OutHitLocation) const;
-    bool GetLookVectorHitLocation(FVector& LookFrom, FVector& HitLocation) const;
+    bool GetLookVectorHitLocation(FVector& LookFrom, FVector& OutHitLocation) const;
     UPROPERTY(EditAnywhere)
     float CrossHairXLocation = 0.5;
     UPROPERTY(EditAnywhere)

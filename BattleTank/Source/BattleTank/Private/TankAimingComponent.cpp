@@ -11,18 +11,30 @@ UTankAimingComponent::UTankAimingComponent()
 {
     // Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
     // off to improve performance if you don't need them.
-    PrimaryComponentTick.bCanEverTick = true;
+    PrimaryComponentTick.bCanEverTick = false;
 
     // ...
 }
 
 void UTankAimingComponent::SetBarrelReference(UTankBarrel* BarrelToSet)
 {
+    if (!BarrelToSet)
+    {
+        UE_LOG(LogTemp, Warning, TEXT("tank %s aiming component has no barrel to set!"), *GetOwner()->GetName());
+        return;
+    }
+
     Barrel = BarrelToSet;
 }
 
 void UTankAimingComponent::SetTurretReference(UTankTurret* TurretToSet)
 {
+    if (!TurretToSet)
+    {
+        UE_LOG(LogTemp, Warning, TEXT("tank %s aiming component has no turret to set!"), *GetOwner()->GetName());
+        return;
+    }
+
     Turret = TurretToSet;
 }
 
@@ -55,12 +67,12 @@ void UTankAimingComponent::AimAt(const FVector HitLocation, const float LaunchSp
         return;
     }
 
-    const auto TankName = GetOwner()->GetName();
-    const auto Time = GetWorld()->GetTimeSeconds();
-    UE_LOG(LogTemp, Warning, TEXT("%f: %s wants to elevate barrel."), Time, *TankName);
-
     const FVector AimDirection = OutLaunchVelocity.GetSafeNormal();
     const FRotator AimRtt = AimDirection.Rotation();
+
+    const auto TankName = GetOwner()->GetName();
+    const auto Time = GetWorld()->GetTimeSeconds();
+    UE_LOG(LogTemp, Warning, TEXT("%f: %s aiming towards %s"), Time, *TankName, *AimRtt.ToString());
 
     MoveBarrelTowards(AimRtt);
     MoveTurretTowards(AimRtt);

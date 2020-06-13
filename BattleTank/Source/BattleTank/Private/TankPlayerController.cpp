@@ -65,16 +65,18 @@ bool ATankPlayerController::GetLookDirection(const FVector2D ScreenLocation, FVe
 {
     FVector OutCameraLocation;
 
-    return DeprojectScreenPositionToWorld
+    const bool bFoundDirection = DeprojectScreenPositionToWorld
     (
         ScreenLocation.X,
         ScreenLocation.Y,
         OutCameraLocation,
         OutLookDirection
     );
+
+    return bFoundDirection;
 }
 
-bool ATankPlayerController::GetLookVectorHitLocation(FVector& LookDirection, FVector& OutHitLocation) const
+bool ATankPlayerController::GetLookVectorHitLocation(FVector& LookFrom, FVector& OutHitLocation) const
 {
     // collision query parameters: defaultName, don't go through glass, ignore self
     const FCollisionQueryParams CollisionQueryParams(
@@ -84,7 +86,7 @@ bool ATankPlayerController::GetLookVectorHitLocation(FVector& LookDirection, FVe
     );
     FHitResult OutHitResult;
     FVector StartLocation = PlayerCameraManager->GetCameraLocation();
-    FVector EndLocation = StartLocation + (LookDirection * LineTraceRange);
+    FVector EndLocation = StartLocation + (LookFrom * LineTraceRange);
 
     // see what is hit up to max. range
     const bool bHit = GetWorld()->LineTraceSingleByChannel(
@@ -95,11 +97,12 @@ bool ATankPlayerController::GetLookVectorHitLocation(FVector& LookDirection, FVe
         CollisionQueryParams,
         FCollisionResponseParams::DefaultResponseParam
     );
+
     if (bHit)
     {
-        // set HitLocation and return true
+        // set HitLocation
         OutHitLocation = OutHitResult.Location;
-        return true;
     }
-    return false;
+
+    return bHit;
 }

@@ -19,11 +19,23 @@ ATank::ATank()
 
 void ATank::SetBarrelReference(UTankBarrel* BarrelToSet) const
 {
+    if (!BarrelToSet)
+    {
+        UE_LOG(LogTemp, Warning, TEXT("tank %s has no barrel to set!"), *GetOwner()->GetName());
+        return;
+    }
+
     TankAimingComponent->SetBarrelReference(BarrelToSet);
 }
 
 void ATank::SetTurretReference(UTankTurret* TurretToSet) const
 {
+    if (!TurretToSet)
+    {
+        UE_LOG(LogTemp, Warning, TEXT("tank %s has no turret to set!"), *GetOwner()->GetName());
+        return;
+    }
+
     TankAimingComponent->SetTurretReference(TurretToSet);
 }
 
@@ -36,6 +48,8 @@ void ATank::BeginPlay()
 // Called to bind functionality to input
 void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
+    if (!PlayerInputComponent) return;
+    
     Super::SetupPlayerInputComponent(PlayerInputComponent);
 }
 

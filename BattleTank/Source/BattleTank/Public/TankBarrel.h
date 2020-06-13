@@ -10,7 +10,7 @@
  * UStaticMeshComponent elevation of tank barrel
  */
 UCLASS( meta=(BlueprintSpawnableComponent), HideCategories=("Collision") )
-class BATTLETANK_API UTankBarrel : public UStaticMeshComponent
+class BATTLETANK_API UTankBarrel final : public UStaticMeshComponent
 {
     GENERATED_BODY()
 public:
@@ -18,7 +18,7 @@ public:
     void Elevate(float RelativeSpeed);
 private:
     UPROPERTY(EditAnywhere, Category = Setup)
-    float MaxDegreesPerSecond = 5.f;
+    float MaxDegreesPerSecond = 10.f;
     UPROPERTY(EditAnywhere, Category = Setup)
     float MaxElevationDegrees = 45.f;
     UPROPERTY(EditAnywhere, Category = Setup)

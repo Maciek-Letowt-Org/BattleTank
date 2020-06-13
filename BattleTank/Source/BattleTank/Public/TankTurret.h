@@ -10,7 +10,7 @@
  * UStaticMeshComponent rotation of tank turret 
  */
 UCLASS( meta=(BlueprintSpawnableComponent), HideCategories=("Collision") )
-class BATTLETANK_API UTankTurret : public UStaticMeshComponent
+class BATTLETANK_API UTankTurret final : public UStaticMeshComponent
 {
 	GENERATED_BODY()
 	public:
@@ -18,5 +18,5 @@ class BATTLETANK_API UTankTurret : public UStaticMeshComponent
         void Rotate(float RelativeSpeed);
 	private:
         UPROPERTY(EditAnywhere, Category = Setup)
-        float MaxDegreesPerSecond = 5.f;
+        float MaxDegreesPerSecond = 25.f;
 };

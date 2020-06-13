@@ -8,7 +8,7 @@
 class UTankBarrel; // Forward Declaration instead of include
 class UTankTurret; // Forward Declaration instead of include
 UCLASS()
-class BATTLETANK_API ATank : public APawn
+class BATTLETANK_API ATank final : public APawn
 {
     GENERATED_BODY()
 public:
@@ -32,6 +32,6 @@ private:
     // Called to bind functionality to input
     virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-    UPROPERTY(EditAnywhere,Category=Firing)
-    float LaunchSpeed = 100000; // = 1000 m/s
+    UPROPERTY(EditAnywhere, Category=Firing)
+    float LaunchSpeed = 2000; // = 2000 m/s
 };
