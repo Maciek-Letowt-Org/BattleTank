@@ -67,10 +67,6 @@ void UTankAimingComponent::AimAt(const FVector HitLocation, const float LaunchSp
     const FVector AimDirection = OutLaunchVelocity.GetSafeNormal();
     const FRotator AimRtt = AimDirection.Rotation();
 
-    const auto TankName = GetOwner()->GetName();
-    const auto Time = GetWorld()->GetTimeSeconds();
-    UE_LOG(LogTemp, Warning, TEXT("%f: %s aiming towards %s"), Time, *TankName, *AimRtt.ToString());
-
     MoveBarrelTowards(AimRtt);
     MoveTurretTowards(AimRtt);
 }
