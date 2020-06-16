@@ -18,7 +18,8 @@ public:
     void SetBarrelReference(UTankBarrel* BarrelToSet) const;
     UFUNCTION(BlueprintCallable, Category=Setup)
     void SetTurretReference(UTankTurret* TurretToSet) const;
-
+    UFUNCTION(BlueprintCallable, Category=Firing)
+    void Fire() const;
 protected:
     class UTankAimingComponent* TankAimingComponent = nullptr;
 private:

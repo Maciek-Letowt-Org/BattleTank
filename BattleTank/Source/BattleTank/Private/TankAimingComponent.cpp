@@ -61,9 +61,6 @@ void UTankAimingComponent::AimAt(const FVector HitLocation, const float LaunchSp
 
     if (!bHaveAimSolution)
     {
-        const auto TankName = GetOwner()->GetName();
-        const auto Time = GetWorld()->GetTimeSeconds();
-        UE_LOG(LogTemp, Warning, TEXT("%f: %s cannot find aim solution."), Time, *TankName);
         return;
     }
 
