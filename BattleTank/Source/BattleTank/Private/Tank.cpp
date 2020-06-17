@@ -6,6 +6,7 @@
 #include "TankAimingComponent.h"
 #include "TankBarrel.h"
 #include "TankTurret.h"
+#include "Projectile.h"
 
 // Sets default values
 ATank::ATank()
@@ -17,7 +18,7 @@ ATank::ATank()
     TankAimingComponent = CreateDefaultSubobject<UTankAimingComponent>(FName("AimingComponent"));
 }
 
-void ATank::SetBarrelReference(UTankBarrel* BarrelToSet) const
+void ATank::SetBarrelReference(UTankBarrel* BarrelToSet)
 {
     if (!BarrelToSet)
     {
@@ -26,6 +27,7 @@ void ATank::SetBarrelReference(UTankBarrel* BarrelToSet) const
     }
 
     TankAimingComponent->SetBarrelReference(BarrelToSet);
+    Barrel = BarrelToSet;
 }
 
 void ATank::SetTurretReference(UTankTurret* TurretToSet) const
@@ -41,9 +43,21 @@ void ATank::SetTurretReference(UTankTurret* TurretToSet) const
 
 void ATank::Fire() const
 {
+    if (!Barrel)
+    {
+        UE_LOG(LogTemp, Warning, TEXT("tank %s has no barrel to fire!"), *GetOwner()->GetName());
+        return;
+    }
+
+    GetWorld()->SpawnActor<AProjectile>(
+        ProjectileBluePrint,
+        Barrel->GetSocketLocation(FName("Projectile")),
+        Barrel->GetSocketRotation(FName("Projectile"))
+    );
+
     const auto TankName = GetOwner()->GetName();
     const auto Time = GetWorld()->GetTimeSeconds();
-    UE_LOG(LogTemp, Warning, TEXT("%f: %s FIRE!"), Time, *TankName);
+    UE_LOG(LogTemp, Warning, TEXT("%f: %s FIRE! Spawn Projectile"), Time, *TankName);
 }
 
 // Called when the game starts or when spawned
@@ -56,7 +70,7 @@ void ATank::BeginPlay()
 void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
     if (!PlayerInputComponent) return;
-    
+
     Super::SetupPlayerInputComponent(PlayerInputComponent);
 }
 

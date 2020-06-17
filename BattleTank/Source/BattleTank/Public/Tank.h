@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
 #include "Tank.generated.h"
+class AProjectile; // FD
 class UTankBarrel; // Forward Declaration instead of include
 class UTankTurret; // Forward Declaration instead of include
 UCLASS()
@@ -15,7 +16,7 @@ public:
     void AimAt(FVector HitLocation) const;
 
     UFUNCTION(BlueprintCallable, Category=Setup)
-    void SetBarrelReference(UTankBarrel* BarrelToSet) const;
+    void SetBarrelReference(UTankBarrel* BarrelToSet);
     UFUNCTION(BlueprintCallable, Category=Setup)
     void SetTurretReference(UTankTurret* TurretToSet) const;
     UFUNCTION(BlueprintCallable, Category=Firing)
@@ -35,4 +36,12 @@ private:
 
     UPROPERTY(EditAnywhere, Category=Firing)
     float LaunchSpeed = 2000; // = 2000 m/s
+
+    UPROPERTY(EditAnywhere, Category=Setup)
+    TSubclassOf<AProjectile> ProjectileBluePrint; // unsafe Alternative = UClass*
+    //UClass* ProjectileBluePrint = nullptr; // unsafe - makes editor crash
+
+    
+    // local barrel reference for spawning projectile
+    UTankBarrel* Barrel = nullptr;
 };
