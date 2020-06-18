@@ -20,7 +20,7 @@ public:
     UFUNCTION(BlueprintCallable, Category=Setup)
     void SetTurretReference(UTankTurret* TurretToSet) const;
     UFUNCTION(BlueprintCallable, Category=Firing)
-    void Fire() const;
+    void Fire();
 protected:
     class UTankAimingComponent* TankAimingComponent = nullptr;
 private:
@@ -36,7 +36,12 @@ private:
 
     UPROPERTY(EditAnywhere, Category=Firing)
     float LaunchSpeed = 2000; // = 2000 m/s
+    UPROPERTY(EditAnywhere, Category=Firing)
+    int RateOfFire = 20; // rounds per minute
+    double ReloadTimeInSeconds = 0; // 60 / RateOfFire
+    double LastFireTime = 0; // time seconds of last fire
 
+    
     UPROPERTY(EditAnywhere, Category=Setup)
     TSubclassOf<AProjectile> ProjectileBluePrint; // unsafe Alternative = UClass*
     //UClass* ProjectileBluePrint = nullptr; // unsafe - makes editor crash

@@ -3,10 +3,10 @@
 
 #include "Tank.h"
 #include "GameFramework/Pawn.h"
+#include "Projectile.h"
 #include "TankAimingComponent.h"
 #include "TankBarrel.h"
 #include "TankTurret.h"
-#include "Projectile.h"
 
 // Sets default values
 ATank::ATank()
@@ -16,6 +16,13 @@ ATank::ATank()
 
     //no need to protect pointer as added at construction
     TankAimingComponent = CreateDefaultSubobject<UTankAimingComponent>(FName("AimingComponent"));
+    
+    if (RateOfFire <= 0.f)
+    {
+        UE_LOG(LogTemp, Warning, TEXT("tank %s has no positive rate of fire!"), *GetOwner()->GetName());
+        RateOfFire = 1;
+    }
+    ReloadTimeInSeconds = 60 / RateOfFire;
 }
 
 void ATank::SetBarrelReference(UTankBarrel* BarrelToSet)
@@ -41,7 +48,7 @@ void ATank::SetTurretReference(UTankTurret* TurretToSet) const
     TankAimingComponent->SetTurretReference(TurretToSet);
 }
 
-void ATank::Fire() const
+void ATank::Fire()
 {
     if (!Barrel)
     {
@@ -49,15 +56,22 @@ void ATank::Fire() const
         return;
     }
 
-    GetWorld()->SpawnActor<AProjectile>(
-        ProjectileBluePrint,
-        Barrel->GetSocketLocation(FName("Projectile")),
-        Barrel->GetSocketRotation(FName("Projectile"))
-    );
+    const bool bIsReloaded = (FPlatformTime::Seconds() - LastFireTime > ReloadTimeInSeconds);
 
-    const auto TankName = GetOwner()->GetName();
-    const auto Time = GetWorld()->GetTimeSeconds();
-    UE_LOG(LogTemp, Warning, TEXT("%f: %s FIRE! Spawn Projectile"), Time, *TankName);
+    if (bIsReloaded)
+    {
+        const FVector Loc = Barrel->GetSocketLocation(FName("Projectile"));
+        const FRotator Rot = Barrel->GetSocketRotation(FName("Projectile"));
+
+        AProjectile* Projectile = GetWorld()->SpawnActor<AProjectile>(
+            ProjectileBluePrint,
+            Loc,
+            Rot
+        );
+
+        Projectile->LaunchProjectile(LaunchSpeed);
+        LastFireTime = FPlatformTime::Seconds();    
+    }
 }
 
 // Called when the game starts or when spawned
