@@ -12,11 +12,11 @@
 UCLASS( meta=(BlueprintSpawnableComponent)) //, HideCategories=("Collision") )
 class BATTLETANK_API UTankTurret final : public UStaticMeshComponent
 {
-	GENERATED_BODY()
-	public:
-        // -1 is max anticlockwise speed. +1 is max clockwise speed
-        void Rotate(float RelativeSpeed);
-	private:
-        UPROPERTY(EditAnywhere, Category = Setup)
-        float MaxDegreesPerSecond = 25.f;
+    GENERATED_BODY()
+public:
+    // -1 is max anticlockwise speed. +1 is max clockwise speed
+    void Rotate(float RelativeSpeed);
+private:
+    UPROPERTY(EditAnywhere, Category = Setup)
+    float MaxDegreesPerSecond = 25.f;
 };

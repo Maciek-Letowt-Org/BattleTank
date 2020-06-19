@@ -20,7 +20,7 @@ public:
     UTankAimingComponent();
     void SetBarrelReference(UTankBarrel* BarrelToSet);
     void SetTurretReference(UTankTurret* TurretToSet);
-    void AimAt(const FVector HitLocation, float LaunchSpeed) const;
+    void AimAt(FVector HitLocation, float LaunchSpeed) const;
 private:
     UTankBarrel* Barrel = nullptr;
     UTankTurret* Turret = nullptr;

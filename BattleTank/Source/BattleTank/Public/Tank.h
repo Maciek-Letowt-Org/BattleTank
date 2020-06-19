@@ -29,10 +29,10 @@ private:
     ATank();
 
     // Called when the game starts or when spawned
-    virtual void BeginPlay() override;
+    void BeginPlay() override;
 
     // Called to bind functionality to input
-    virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+    void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
     UPROPERTY(EditAnywhere, Category=Firing)
     float LaunchSpeed = 2000; // = 2000 m/s
@@ -41,12 +41,12 @@ private:
     double ReloadTimeInSeconds = 0; // 60 / RateOfFire
     double LastFireTime = 0; // time seconds of last fire
 
-    
+
     UPROPERTY(EditAnywhere, Category=Setup)
     TSubclassOf<AProjectile> ProjectileBluePrint; // unsafe Alternative = UClass*
     //UClass* ProjectileBluePrint = nullptr; // unsafe - makes editor crash
 
-    
+
     // local barrel reference for spawning projectile
     UTankBarrel* Barrel = nullptr;
 };

@@ -12,11 +12,11 @@
 UCLASS()
 class BATTLETANK_API UTankPlayerUI : public UUserWidget
 {
-	GENERATED_BODY()
-	UPROPERTY(meta = (BindWidget))
+    GENERATED_BODY()
+    UPROPERTY(meta = (BindWidget))
     class UCanvasPanel* Panel;
-	UPROPERTY(meta = (BindWidget))
+    UPROPERTY(meta = (BindWidget))
     class UImage* AimPoint;
-	// UPROPERTY(meta = (BindWidget))
- //    class UTextBlock* AmmoText;
+    // UPROPERTY(meta = (BindWidget))
+    //    class UTextBlock* AmmoText;
 };

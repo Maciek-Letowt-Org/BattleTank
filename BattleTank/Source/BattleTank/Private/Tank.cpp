@@ -16,7 +16,7 @@ ATank::ATank()
 
     //no need to protect pointer as added at construction
     TankAimingComponent = CreateDefaultSubobject<UTankAimingComponent>(FName("AimingComponent"));
-    
+
     if (RateOfFire <= 0.f)
     {
         UE_LOG(LogTemp, Warning, TEXT("tank %s has no positive rate of fire!"), *GetOwner()->GetName());
@@ -70,7 +70,7 @@ void ATank::Fire()
         );
 
         Projectile->LaunchProjectile(LaunchSpeed);
-        LastFireTime = FPlatformTime::Seconds();    
+        LastFireTime = FPlatformTime::Seconds();
     }
 }
 

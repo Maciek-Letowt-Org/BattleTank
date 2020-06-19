@@ -9,7 +9,7 @@ void ATankPlayerController::BeginPlay()
 {
     Super::BeginPlay();
     // logs computerNameHexWord
-    UE_LOG(LogTemp, Warning, TEXT("tank player controller pawn %s"), *GetPawn()->GetHumanReadableName());;
+    UE_LOG(LogTemp, Warning, TEXT("tank player controller pawn %s"), *GetPawn()->GetHumanReadableName());
     ATank* TankPtr = GetControlledTank();
     if (TankPtr)
     {
@@ -93,7 +93,7 @@ bool ATankPlayerController::GetLookVectorHitLocation(FVector& LookFrom, FVector&
         OutHitResult,
         StartLocation,
         EndLocation,
-        ECollisionChannel::ECC_Visibility,
+        ECC_Visibility,
         CollisionQueryParams,
         FCollisionResponseParams::DefaultResponseParam
     );

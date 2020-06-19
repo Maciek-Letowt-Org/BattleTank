@@ -12,9 +12,9 @@ class BATTLETANK_API ATankPlayerController final : public APlayerController
     GENERATED_BODY()
 private:
     // Called when the game starts or when spawned
-    virtual void BeginPlay() override;
+    void BeginPlay() override;
     // Called every frame
-    virtual void Tick(const float DeltaSeconds) override;
+    void Tick(float DeltaSeconds) override;
 
 
     // move barrel towards position where a shot would hit where crosshair intersects world
