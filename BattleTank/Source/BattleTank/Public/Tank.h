@@ -34,15 +34,15 @@ private:
     // Called to bind functionality to input
     void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-    UPROPERTY(EditAnywhere, Category=Firing)
+    UPROPERTY(EditDefaultsOnly, Category=Firing)
     float LaunchSpeed = 2000; // = 2000 m/s
-    UPROPERTY(EditAnywhere, Category=Firing)
+    UPROPERTY(EditDefaultsOnly, Category=Firing)
     int RateOfFire = 20; // rounds per minute
     double ReloadTimeInSeconds = 0; // 60 / RateOfFire
     double LastFireTime = 0; // time seconds of last fire
 
 
-    UPROPERTY(EditAnywhere, Category=Setup)
+    UPROPERTY(EditDefaultsOnly, Category=Setup)
     TSubclassOf<AProjectile> ProjectileBluePrint; // unsafe Alternative = UClass*
     //UClass* ProjectileBluePrint = nullptr; // unsafe - makes editor crash
 

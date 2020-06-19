@@ -3,7 +3,7 @@
 
 void UTankTurret::Rotate(float RelativeSpeed)
 {
-    RelativeSpeed = FMath::Clamp<float>(RelativeSpeed, -1, +1);
+    RelativeSpeed = FMath::Clamp<float>(RelativeSpeed, -1.f, +1.f);
     // move the turret right amount this frame, given:
     // max elevation speed, frame time
     const float RotationChange = RelativeSpeed * MaxDegreesPerSecond * GetWorld()->DeltaTimeSeconds;
