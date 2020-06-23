@@ -25,8 +25,6 @@ void AProjectile::LaunchProjectile(const float Speed)
 {
     ProjectileMovement->SetVelocityInLocalSpace(FVector::ForwardVector * Speed);
     ProjectileMovement->Activate();
-    const float Time = GetWorld()->GetTimeSeconds();
-    UE_LOG(LogTemp, Warning, TEXT("%f: FIRE! Launched Projectile @ %f"), Time, Speed);
 }
 
 // Called every frame
