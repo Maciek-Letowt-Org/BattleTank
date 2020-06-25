@@ -8,14 +8,9 @@
 void ATankPlayerController::BeginPlay()
 {
     Super::BeginPlay();
-    // logs computerNameHexWord
-    UE_LOG(LogTemp, Warning, TEXT("tank player controller pawn %s"), *GetPawn()->GetHumanReadableName());
     ATank* TankPtr = GetControlledTank();
-    if (TankPtr)
-    {
-        UE_LOG(LogTemp, Warning, TEXT("tank player controller tank %s"), *TankPtr->GetName())
-    }
-    else
+
+    if (!TankPtr)
     {
         UE_LOG(LogTemp, Warning, TEXT("tank player controller has no tank!"))
     }

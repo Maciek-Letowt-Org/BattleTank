@@ -3,11 +3,9 @@
 
 #include "TankTrack.h"
 
-void UTankTrack::SetThrottle(const float Throttle)
+void UTankTrack::SetThrottle(const float Throttle) const
 {
-    const float Time = GetWorld()->GetTimeSeconds();
-    const auto Name = GetName();
-    UE_LOG(LogTemp, Warning, TEXT("%f %s: throttle @ %f"), Time, *Name, Throttle);
+
 
     // TODO clamp throttle
 

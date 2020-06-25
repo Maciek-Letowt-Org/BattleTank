@@ -17,7 +17,7 @@ public:
 
     // Called every frame
     void Tick(float DeltaTime) override;
-    void LaunchProjectile(float Speed);
+    void LaunchProjectile(float Speed) const;
 protected:
     // Called when the game starts or when spawned
     void BeginPlay() override;

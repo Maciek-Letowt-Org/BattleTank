@@ -21,7 +21,7 @@ void AProjectile::BeginPlay()
     Super::BeginPlay();
 }
 
-void AProjectile::LaunchProjectile(const float Speed)
+void AProjectile::LaunchProjectile(const float Speed) const
 {
     ProjectileMovement->SetVelocityInLocalSpace(FVector::ForwardVector * Speed);
     ProjectileMovement->Activate();

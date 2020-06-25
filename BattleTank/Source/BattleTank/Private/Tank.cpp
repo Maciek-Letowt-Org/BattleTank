@@ -6,6 +6,7 @@
 #include "Projectile.h"
 #include "TankAimingComponent.h"
 #include "TankBarrel.h"
+#include "TankMovementComponent.h"
 #include "TankTurret.h"
 
 // Sets default values
@@ -16,6 +17,7 @@ ATank::ATank()
 
     //no need to protect pointer as added at construction
     TankAimingComponent = CreateDefaultSubobject<UTankAimingComponent>(FName("AimingComponent"));
+    TankMovementComponent = CreateDefaultSubobject<UTankMovementComponent>(FName("MovementComponent"));
 
     if (RateOfFire <= 0.f)
     {
