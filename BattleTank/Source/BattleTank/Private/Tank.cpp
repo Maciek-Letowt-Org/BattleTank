@@ -17,7 +17,9 @@ ATank::ATank()
 
     //no need to protect pointer as added at construction
     TankAimingComponent = CreateDefaultSubobject<UTankAimingComponent>(FName("AimingComponent"));
-    TankMovementComponent = CreateDefaultSubobject<UTankMovementComponent>(FName("MovementComponent"));
+
+    // no longer need as now blue print spawn-able
+    //TankMovementComponent = CreateDefaultSubobject<UTankMovementComponent>(FName("MovementComponent"));
 
     if (RateOfFire <= 0.f)
     {
