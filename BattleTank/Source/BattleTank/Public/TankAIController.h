@@ -19,4 +19,8 @@ private:
 
     // Called every frame
     void Tick(float DeltaSeconds) override;
+    
+    // how close to player in cm
+    UPROPERTY(EditDefaultsOnly)
+    float AcceptanceRadius = 3000.f;
 };
