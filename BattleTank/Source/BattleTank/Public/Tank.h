@@ -31,10 +31,10 @@ private:
     ATank();
 
     // Called when the game starts or when spawned
-    void BeginPlay() override;
+    virtual void BeginPlay() override;
 
     // Called to bind functionality to input
-    void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+    virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
     UPROPERTY(EditDefaultsOnly, Category=Firing)
     float LaunchSpeed = 2000; // = 2000 m/s
