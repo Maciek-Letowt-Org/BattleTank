@@ -22,6 +22,7 @@ public:
     UFUNCTION(BlueprintCallable, Category=Firing)
     void Fire();
 protected:
+    UPROPERTY(BlueprintReadOnly)
     class UTankAimingComponent* TankAimingComponent = nullptr;
     UPROPERTY(BlueprintReadOnly)
     class UTankMovementComponent* TankMovementComponent = nullptr;
