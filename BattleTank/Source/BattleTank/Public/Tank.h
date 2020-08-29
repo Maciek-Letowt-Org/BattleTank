@@ -15,11 +15,11 @@ class BATTLETANK_API ATank final : public APawn
 public:
     void AimAt(FVector HitLocation) const;
 
-    UFUNCTION(BlueprintCallable, Category=Setup)
+    UFUNCTION(BlueprintCallable, Category="Setup")
     void SetBarrelReference(UTankBarrel* BarrelToSet);
-    UFUNCTION(BlueprintCallable, Category=Setup)
+    UFUNCTION(BlueprintCallable, Category="Setup")
     void SetTurretReference(UTankTurret* TurretToSet) const;
-    UFUNCTION(BlueprintCallable, Category=Firing)
+    UFUNCTION(BlueprintCallable, Category="Firing")
     void Fire();
 protected:
     UPROPERTY(BlueprintReadOnly)

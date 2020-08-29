@@ -11,7 +11,7 @@ class BATTLETANK_API ATankPlayerController final : public APlayerController
 {
     GENERATED_BODY()
 protected:
-    UFUNCTION(BlueprintCallable, Category = Setup)
+    UFUNCTION(BlueprintCallable, Category = "Setup")
     class ATank* GetControlledTank() const;
 private:
     // Called when the game starts or when spawned
