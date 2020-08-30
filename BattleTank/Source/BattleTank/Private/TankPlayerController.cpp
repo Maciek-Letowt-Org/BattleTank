@@ -24,10 +24,16 @@ void ATankPlayerController::Tick(const float DeltaSeconds)
 
 void ATankPlayerController::AimTowardsCrosshair() const
 {
-    if (!GetControlledTank()) return;
+    if (!GetControlledTank())
+    {
+        return;
+    }
 
     FVector HitLocation;
-    if (!GetSightRayHitLocation(HitLocation)) return;
+    if (!GetSightRayHitLocation(HitLocation))
+    {
+        return;
+    }
 
     // aim towards HitLocation
     GetControlledTank()->AimAt(HitLocation);
@@ -44,16 +50,25 @@ bool ATankPlayerController::GetSightRayHitLocation(FVector& OutHitLocation) cons
     // find crosshair position in pixel coordinates
     int32 OutViewPortSizeX, OutViewPortSizeY;
     GetViewportSize(OutViewPortSizeX, OutViewPortSizeY);
-    if (OutViewPortSizeX == 0 || OutViewPortSizeY == 0) return false;
+    if (OutViewPortSizeX == 0 || OutViewPortSizeY == 0)
+    {
+        return false;
+    }
+
 
     // "De-Project" the screen position of the crosshair to "look direction"
     const FVector2D ScreenLocation = FVector2D(CrossHairXLocation * OutViewPortSizeX,
                                                CrossHairYLocation * OutViewPortSizeY);
     FVector OutLookDirection;
-    if (!GetLookDirection(ScreenLocation, OutLookDirection)) return false;
-
-    // return result from ray cast in "look direction" from camera to World
-    return GetLookVectorHitLocation(OutLookDirection, OutHitLocation);
+    if (GetLookDirection(ScreenLocation, OutLookDirection))
+    {
+        // return result from ray cast in "look direction" from camera to World
+        return GetLookVectorHitLocation(OutLookDirection, OutHitLocation);
+    }
+    else
+    {
+        return false;
+    }
 }
 
 bool ATankPlayerController::GetLookDirection(const FVector2D ScreenLocation, FVector& OutLookDirection) const

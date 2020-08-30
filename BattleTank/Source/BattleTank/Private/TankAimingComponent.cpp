@@ -16,7 +16,7 @@ UTankAimingComponent::UTankAimingComponent()
     // ...
 }
 
-void UTankAimingComponent::SetBarrelReference(UTankBarrel* BarrelToSet)
+void UTankAimingComponent::Initialise(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet)
 {
     if (!BarrelToSet)
     {
@@ -24,25 +24,29 @@ void UTankAimingComponent::SetBarrelReference(UTankBarrel* BarrelToSet)
         return;
     }
 
-    Barrel = BarrelToSet;
-}
-
-void UTankAimingComponent::SetTurretReference(UTankTurret* TurretToSet)
-{
     if (!TurretToSet)
     {
         UE_LOG(LogTemp, Warning, TEXT("tank %s aiming component has no turret to set!"), *GetOwner()->GetName());
         return;
     }
 
+    Barrel = BarrelToSet;
     Turret = TurretToSet;
 }
 
-
 void UTankAimingComponent::AimAt(const FVector HitLocation, const float LaunchSpeed) const
 {
-    if (!Barrel) return;
-    if (!Turret) return;
+    if (!Barrel)
+    {
+        UE_LOG(LogTemp, Warning, TEXT("tank %s aiming component has no barrel to aim!"), *GetOwner()->GetName());
+        return;
+    }
+
+    if (!Turret)
+    {
+        UE_LOG(LogTemp, Warning, TEXT("tank %s aiming component has no turret to aim!"), *GetOwner()->GetName());
+        return;
+    }
 
     const FVector StartLocation = Barrel->GetSocketLocation(FName("Projectile"));
     FVector OutLaunchVelocity;
@@ -73,6 +77,12 @@ void UTankAimingComponent::AimAt(const FVector HitLocation, const float LaunchSp
 
 void UTankAimingComponent::MoveBarrelTowards(const FRotator AimRtt) const
 {
+    if (!Barrel)
+    {
+        UE_LOG(LogTemp, Warning, TEXT("tank %s aiming component has no barrel to move!"), *GetOwner()->GetName());
+        return;
+    }
+
     // work out rotation difference between current barrel rotation & aim direction rotation
     const FRotator BarrelRtt = Barrel->GetForwardVector().Rotation();
     const FRotator DeltaRtt = AimRtt - BarrelRtt;
@@ -82,6 +92,12 @@ void UTankAimingComponent::MoveBarrelTowards(const FRotator AimRtt) const
 
 void UTankAimingComponent::MoveTurretTowards(const FRotator AimRtt) const
 {
+    if (!Turret)
+    {
+        UE_LOG(LogTemp, Warning, TEXT("tank %s aiming component has no turret to move!"), *GetOwner()->GetName());
+        return;
+    }
+
     // work out rotation difference between current turret rotation & aim direction rotation
     const FRotator TurretRtt = Turret->GetForwardVector().Rotation();
     const FRotator DeltaRtt = AimRtt - TurretRtt;
