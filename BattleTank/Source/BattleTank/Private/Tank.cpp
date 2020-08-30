@@ -51,5 +51,10 @@ void ATank::Fire()
 
 void ATank::AimAt(const FVector HitLocation) const
 {
+    if (!TankAimingComponent)
+    {
+        UE_LOG(LogTemp, Warning, TEXT("tank %s has no aiming component!"), *GetOwner()->GetName());
+        return;
+    }
     TankAimingComponent->AimAt(HitLocation, LaunchSpeed);
 }
