@@ -1,11 +1,10 @@
 // copyright Maciek Letowt 2020
 
-
 #include "TankAIController.h"
 #include "Engine/World.h"
 #include "Tank.h"
 
-// Called when the game starts or when spawned
+// Depends on movement component via pathfinding system. Called when the game starts or when spawned
 
 
 void ATankAIController::BeginPlay()
