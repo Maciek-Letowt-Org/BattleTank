@@ -3,6 +3,7 @@
 #include "CollisionQueryParams.h"
 #include "Engine/World.h"
 #include "Tank.h"
+#include "TankAimingComponent.h"
 
 // Called when the game starts or when spawned
 void ATankPlayerController::BeginPlay()
@@ -14,6 +15,16 @@ void ATankPlayerController::BeginPlay()
     {
         UE_LOG(LogTemp, Warning, TEXT("tank player controller has no tank!"))
     }
+
+    UTankAimingComponent* AimingComponent = TankPtr->FindComponentByClass<UTankAimingComponent>();
+    if (ensure(AimingComponent))
+    {
+        FoundAimingComponent(AimingComponent);
+    }
+    else
+    {
+        UE_LOG(LogTemp, Warning, TEXT("tank player controller has no aiming component!"))
+    }
 }
 
 void ATankPlayerController::Tick(const float DeltaSeconds)
@@ -24,19 +35,15 @@ void ATankPlayerController::Tick(const float DeltaSeconds)
 
 void ATankPlayerController::AimTowardsCrosshair() const
 {
-    if (!GetControlledTank())
+    if (GetControlledTank())
     {
-        return;
+        FVector OutHitLocation;
+        if (GetSightRayHitLocation(OutHitLocation))
+        {
+            // aim towards Hit Location
+            GetControlledTank()->AimAt(OutHitLocation);
+        }
     }
-
-    FVector HitLocation;
-    if (!GetSightRayHitLocation(HitLocation))
-    {
-        return;
-    }
-
-    // aim towards HitLocation
-    GetControlledTank()->AimAt(HitLocation);
 }
 
 ATank* ATankPlayerController::GetControlledTank() const
@@ -44,17 +51,16 @@ ATank* ATankPlayerController::GetControlledTank() const
     return Cast<ATank>(GetPawn());
 }
 
-
 bool ATankPlayerController::GetSightRayHitLocation(FVector& OutHitLocation) const
 {
     // find crosshair position in pixel coordinates
     int32 OutViewPortSizeX, OutViewPortSizeY;
     GetViewportSize(OutViewPortSizeX, OutViewPortSizeY);
+
     if (OutViewPortSizeX == 0 || OutViewPortSizeY == 0)
     {
         return false;
     }
-
 
     // "De-Project" the screen position of the crosshair to "look direction"
     const FVector2D ScreenLocation = FVector2D(CrossHairXLocation * OutViewPortSizeX,
@@ -65,10 +71,8 @@ bool ATankPlayerController::GetSightRayHitLocation(FVector& OutHitLocation) cons
         // return result from ray cast in "look direction" from camera to World
         return GetLookVectorHitLocation(OutLookDirection, OutHitLocation);
     }
-    else
-    {
-        return false;
-    }
+
+    return false;
 }
 
 bool ATankPlayerController::GetLookDirection(const FVector2D ScreenLocation, FVector& OutLookDirection) const

@@ -18,13 +18,13 @@ UTankAimingComponent::UTankAimingComponent()
 
 void UTankAimingComponent::Initialise(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet)
 {
-    if (!BarrelToSet)
+    if (!ensure(BarrelToSet))
     {
         UE_LOG(LogTemp, Warning, TEXT("tank %s aiming component has no barrel to set!"), *GetOwner()->GetName());
         return;
     }
 
-    if (!TurretToSet)
+    if (!ensure(TurretToSet))
     {
         UE_LOG(LogTemp, Warning, TEXT("tank %s aiming component has no turret to set!"), *GetOwner()->GetName());
         return;
@@ -36,13 +36,13 @@ void UTankAimingComponent::Initialise(UTankBarrel* BarrelToSet, UTankTurret* Tur
 
 void UTankAimingComponent::AimAt(const FVector HitLocation, const float LaunchSpeed) const
 {
-    if (!Barrel)
+    if (!ensure(Barrel))
     {
         UE_LOG(LogTemp, Warning, TEXT("tank %s aiming component has no barrel to aim!"), *GetOwner()->GetName());
         return;
     }
 
-    if (!Turret)
+    if (!ensure(Turret))
     {
         UE_LOG(LogTemp, Warning, TEXT("tank %s aiming component has no turret to aim!"), *GetOwner()->GetName());
         return;
@@ -77,7 +77,7 @@ void UTankAimingComponent::AimAt(const FVector HitLocation, const float LaunchSp
 
 void UTankAimingComponent::MoveBarrelTowards(const FRotator AimRtt) const
 {
-    if (!Barrel)
+    if (!ensure(Barrel))
     {
         UE_LOG(LogTemp, Warning, TEXT("tank %s aiming component has no barrel to move!"), *GetOwner()->GetName());
         return;
@@ -92,7 +92,7 @@ void UTankAimingComponent::MoveBarrelTowards(const FRotator AimRtt) const
 
 void UTankAimingComponent::MoveTurretTowards(const FRotator AimRtt) const
 {
-    if (!Turret)
+    if (!ensure(Turret))
     {
         UE_LOG(LogTemp, Warning, TEXT("tank %s aiming component has no turret to move!"), *GetOwner()->GetName());
         return;

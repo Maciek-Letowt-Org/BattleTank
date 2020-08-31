@@ -2,12 +2,16 @@
 
 
 #include "Tank.h"
-#include "GameFramework/Pawn.h"
 #include "Projectile.h"
 #include "TankAimingComponent.h"
 #include "TankBarrel.h"
 #include "TankMovementComponent.h"
-#include "TankTurret.h"
+
+void ATank::BeginPlay()
+{
+    Super::BeginPlay();
+    UE_LOG(LogTemp, Warning, TEXT("xopac tank %s began play"), *GetName());
+}
 
 // Sets default values
 ATank::ATank()
@@ -17,17 +21,18 @@ ATank::ATank()
 
     if (RateOfFire <= 0.f)
     {
-        UE_LOG(LogTemp, Warning, TEXT("tank %s has no positive rate of fire!"), *GetOwner()->GetName());
+        UE_LOG(LogTemp, Warning, TEXT("tank %s has no positive rate of fire! Set to 1"), *GetName());
         RateOfFire = 1;
     }
     ReloadTimeInSeconds = 60 / RateOfFire;
+    UE_LOG(LogTemp, Warning, TEXT("xopac tank %s constructed"), *GetName());
 }
 
 void ATank::Fire()
 {
-    if (!Barrel)
+    if (!ensure(Barrel))
     {
-        UE_LOG(LogTemp, Warning, TEXT("tank %s has no barrel to fire!"), *GetOwner()->GetName());
+        UE_LOG(LogTemp, Warning, TEXT("tank %s has no barrel to fire!"), *GetName());
         return;
     }
 
@@ -51,9 +56,9 @@ void ATank::Fire()
 
 void ATank::AimAt(const FVector HitLocation) const
 {
-    if (!TankAimingComponent)
+    if (!ensure(TankAimingComponent))
     {
-        UE_LOG(LogTemp, Warning, TEXT("tank %s has no aiming component!"), *GetOwner()->GetName());
+        UE_LOG(LogTemp, Warning, TEXT("tank %s has no aiming component!"), *GetName());
         return;
     }
     TankAimingComponent->AimAt(HitLocation, LaunchSpeed);

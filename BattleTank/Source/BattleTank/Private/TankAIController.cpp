@@ -18,14 +18,14 @@ void ATankAIController::Tick(const float DeltaSeconds)
     Super::Tick(DeltaSeconds);
 
     ATank* ControlledTank = Cast<ATank>(GetPawn());
-    if (!ControlledTank)
+    if (!ensure(ControlledTank))
     {
         UE_LOG(LogTemp, Warning, TEXT("AI Controller %s cannot find AI tank!"));
         return;
     }
 
     ATank* PlayerTank = Cast<ATank>(GetWorld()->GetFirstPlayerController()->GetPawn());
-    if (!PlayerTank)
+    if (!ensure(PlayerTank))
     {
         UE_LOG(LogTemp, Warning, TEXT("AI Controller %s cannot find PLAYER tank!"), *GetPawn()->GetName());
         return;

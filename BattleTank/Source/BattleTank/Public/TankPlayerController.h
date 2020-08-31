@@ -3,8 +3,9 @@
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
 #include "TankPlayerController.generated.h"
+class UTankAimingComponent; // FD
 /**
- * 
+ *  Responsible for helping the player aim
  */
 UCLASS()
 class BATTLETANK_API ATankPlayerController final : public APlayerController
@@ -13,6 +14,10 @@ class BATTLETANK_API ATankPlayerController final : public APlayerController
 protected:
     UFUNCTION(BlueprintCallable, Category = "Setup")
     class ATank* GetControlledTank() const;
+
+    UFUNCTION(BlueprintImplementableEvent, Category="Setup")
+    void FoundAimingComponent(UTankAimingComponent* AimCompRef);
+
 private:
     // Called when the game starts or when spawned
     virtual void BeginPlay() override;

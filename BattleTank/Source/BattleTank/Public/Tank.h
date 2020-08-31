@@ -7,7 +7,7 @@
 #include "Tank.generated.h"
 class AProjectile; // FD
 class UTankBarrel; // Forward Declaration instead of include
-//class UTankTurret; // Forward Declaration instead of include
+
 UCLASS()
 class BATTLETANK_API ATank final : public APawn
 {
@@ -22,6 +22,8 @@ protected:
     UPROPERTY(BlueprintReadOnly)
     class UTankMovementComponent* TankMovementComponent = nullptr;
 private:
+    // Called when the game starts or when spawned
+    virtual void BeginPlay() override;
     // Sets default values for this pawn's properties
     ATank();
 

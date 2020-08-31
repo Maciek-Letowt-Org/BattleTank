@@ -12,7 +12,7 @@ void UTankMovementComponent::Initialise(UTankTrack* LeftTrackToSet, UTankTrack* 
 
 void UTankMovementComponent::IntendMoveForward(const float Throw) const
 {
-    if (!LeftTrack || !RightTrack)
+    if (!ensure(LeftTrack && RightTrack))
     {
         UE_LOG(LogTemp, Warning, TEXT("tank %s aiming component has no track to move!"), *GetOwner()->GetName());
         return;
@@ -24,7 +24,7 @@ void UTankMovementComponent::IntendMoveForward(const float Throw) const
 
 void UTankMovementComponent::IntendTurnRight(const float Throw) const
 {
-    if (!LeftTrack || !RightTrack)
+    if (!ensure(LeftTrack && RightTrack))
     {
         UE_LOG(LogTemp, Warning, TEXT("tank %s aiming component has no track to turn!"), *GetOwner()->GetName());
         return;
