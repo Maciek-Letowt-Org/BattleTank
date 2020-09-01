@@ -10,6 +10,7 @@ void ATank::BeginPlay()
 {
     Super::BeginPlay();
     UE_LOG(LogTemp, Warning, TEXT("xopac tank %s began play"), *GetName());
+    TankAimingComponent = FindComponentByClass<UTankAimingComponent>();
 }
 
 // Sets default values
