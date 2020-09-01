@@ -2,8 +2,8 @@
 
 #include "TankAIController.h"
 #include "Engine/World.h"
+#include "TankAimingComponent.h"
 #include "Tank.h"
-
 // Depends on movement component via pathfinding system. Called when the game starts or when spawned
 
 
@@ -15,15 +15,15 @@ void ATankAIController::BeginPlay()
 void ATankAIController::Tick(const float DeltaSeconds)
 {
     Super::Tick(DeltaSeconds);
+    APawn* ControlledTank = GetPawn();
 
-    ATank* ControlledTank = Cast<ATank>(GetPawn());
     if (!ensure(ControlledTank))
     {
-        UE_LOG(LogTemp, Warning, TEXT("AI Controller %s cannot find AI tank!"));
+        UE_LOG(LogTemp, Warning, TEXT("AI Controller %s has no tank!"));
         return;
     }
 
-    ATank* PlayerTank = Cast<ATank>(GetWorld()->GetFirstPlayerController()->GetPawn());
+    APawn* PlayerTank = GetWorld()->GetFirstPlayerController()->GetPawn();
     if (!ensure(PlayerTank))
     {
         UE_LOG(LogTemp, Warning, TEXT("AI Controller %s cannot find PLAYER tank!"), *GetPawn()->GetName());
@@ -33,7 +33,14 @@ void ATankAIController::Tick(const float DeltaSeconds)
     // move towards player
     MoveToActor(PlayerTank, AcceptanceRadius);
 
-    ControlledTank->AimAt(PlayerTank->GetActorLocation());
+    const auto AimingComponent = ControlledTank->FindComponentByClass<UTankAimingComponent>();
+    if(!ensure(AimingComponent))
+    {
+        UE_LOG(LogTemp, Warning, TEXT("AI Controller %s has no aiming component!"), *GetPawn()->GetName());
+        return;
+    }
+    AimingComponent->AimAt(PlayerTank->GetActorLocation());
+
     //fire if ready
-    ControlledTank->Fire();
+    Cast<ATank>(ControlledTank)->Fire();
 }

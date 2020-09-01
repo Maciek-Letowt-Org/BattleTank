@@ -24,9 +24,17 @@
   <component name="ChangeListManager">
     <list default="true" id="7dce812d-bdad-4534-a70e-ef33f7da05c9" name="Default Changelist" comment="After Lesson 285">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BattleTank/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BattleTank/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Vehicles/BP_Tank.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Vehicles/BP_Tank.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Saved/Autosaves/PackageRestoreData.json" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/Autosaves/PackageRestoreData.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Saved/Config/Windows/EditorPerProjectUserSettings.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/Config/Windows/EditorPerProjectUserSettings.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Saved/Config/Windows/Engine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/Config/Windows/Engine.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/BattleTank/Private/Tank.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BattleTank/Private/Tank.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/BattleTank/Private/TankAIController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BattleTank/Private/TankAIController.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/BattleTank/Private/TankAimingComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BattleTank/Private/TankAimingComponent.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/BattleTank/Private/TankPlayerController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BattleTank/Private/TankPlayerController.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/BattleTank/Public/Tank.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BattleTank/Public/Tank.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/BattleTank/Public/TankAIController.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BattleTank/Public/TankAIController.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/BattleTank/Public/TankAimingComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BattleTank/Public/TankAimingComponent.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/BattleTank/Public/TankPlayerController.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BattleTank/Public/TankPlayerController.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,19 +103,19 @@
         <option value="$PROJECT_DIR$/Source/BattleTank/Private/Projectile.cpp" />
         <option value="$PROJECT_DIR$/Source/BattleTank/Private/TankTrack.cpp" />
         <option value="$PROJECT_DIR$/Source/BattleTank/Public/Projectile.h" />
-        <option value="$PROJECT_DIR$/Source/BattleTank/Public/TankAIController.h" />
         <option value="$PROJECT_DIR$/Source/BattleTank/Public/TankBarrel.h" />
         <option value="$PROJECT_DIR$/Source/BattleTank/Public/TankMovementComponent.h" />
         <option value="$PROJECT_DIR$/Source/BattleTank/Public/TankTrack.h" />
         <option value="$PROJECT_DIR$/Source/BattleTank/Public/TankTurret.h" />
-        <option value="$PROJECT_DIR$/Source/BattleTank/Public/TankAimingComponent.h" />
-        <option value="$PROJECT_DIR$/Source/BattleTank/Public/TankPlayerController.h" />
-        <option value="$PROJECT_DIR$/Source/BattleTank/Private/TankAimingComponent.cpp" />
-        <option value="$PROJECT_DIR$/Source/BattleTank/Private/TankPlayerController.cpp" />
         <option value="$PROJECT_DIR$/Source/BattleTank/Private/TankMovementComponent.cpp" />
-        <option value="$PROJECT_DIR$/Source/BattleTank/Private/TankAIController.cpp" />
         <option value="$PROJECT_DIR$/Source/BattleTank/Public/Tank.h" />
+        <option value="$PROJECT_DIR$/Source/BattleTank/Public/TankAimingComponent.h" />
+        <option value="$PROJECT_DIR$/Source/BattleTank/Private/TankAimingComponent.cpp" />
         <option value="$PROJECT_DIR$/Source/BattleTank/Private/Tank.cpp" />
+        <option value="$PROJECT_DIR$/Source/BattleTank/Public/TankPlayerController.h" />
+        <option value="$PROJECT_DIR$/Source/BattleTank/Private/TankPlayerController.cpp" />
+        <option value="$PROJECT_DIR$/Source/BattleTank/Public/TankAIController.h" />
+        <option value="$PROJECT_DIR$/Source/BattleTank/Private/TankAIController.cpp" />
       </list>
     </option>
   </component>
@@ -125,7 +133,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="XThreadsFramesViewSplitterKey" value="0.40680102" />
     <property name="full.screen.before.presentation.mode" value="false" />
-    <property name="settings.editor.selected.configurable" value="com.github.izhangzhihao.rainbow.brackets.settings.RainbowConfigurable" />
+    <property name="settings.editor.selected.configurable" value="CodeLensConfigurable" />
   </component>
   <component name="RunManager" selected="C++ Project.BattleTank">
     <configuration name="BattleTank" type="CppProject" factoryName="C++ Project">
@@ -453,10 +461,10 @@
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="391" key="GridCell.Tab.3.right/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1598822996333" />
-    <state x="-1459" y="165" width="998" height="708" key="SettingsEditor" timestamp="1598476658527">
+    <state x="-1459" y="165" width="998" height="708" key="SettingsEditor" timestamp="1598991817538">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="-1459" y="165" width="1366" height="710" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1598476658527" />
+    <state x="-1459" y="165" width="1366" height="710" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1598991817538" />
     <state x="365" y="95" width="998" height="708" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1596398603697" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1594156072312">
       <screen x="0" y="0" width="1920" height="1040" />

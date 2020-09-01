@@ -2,21 +2,23 @@
 #include "TankPlayerController.h"
 #include "CollisionQueryParams.h"
 #include "Engine/World.h"
-#include "Tank.h"
+//#include "Tank.h"
 #include "TankAimingComponent.h"
 
 // Called when the game starts or when spawned
 void ATankPlayerController::BeginPlay()
 {
     Super::BeginPlay();
-    ATank* TankPtr = GetControlledTank();
+    ControlledTank = GetPawn();
+    //ATank* TankPtr = GetControlledTank();
 
-    if (!TankPtr)
+    if (!ensure(ControlledTank))
     {
-        UE_LOG(LogTemp, Warning, TEXT("tank player controller has no tank!"))
+        UE_LOG(LogTemp, Warning, TEXT("tank player controller has no pawn!"));
+        return;
     }
 
-    UTankAimingComponent* AimingComponent = TankPtr->FindComponentByClass<UTankAimingComponent>();
+    AimingComponent = ControlledTank->FindComponentByClass<UTankAimingComponent>();
     if (ensure(AimingComponent))
     {
         FoundAimingComponent(AimingComponent);
@@ -26,6 +28,10 @@ void ATankPlayerController::BeginPlay()
         UE_LOG(LogTemp, Warning, TEXT("tank player controller has no aiming component!"))
     }
 }
+/*ATank* ATankPlayerController::GetControlledTank() const
+{
+    return Cast<ATank>(GetPawn());
+}*/
 
 void ATankPlayerController::Tick(const float DeltaSeconds)
 {
@@ -35,21 +41,18 @@ void ATankPlayerController::Tick(const float DeltaSeconds)
 
 void ATankPlayerController::AimTowardsCrosshair() const
 {
-    if (GetControlledTank())
+    if (AimingComponent)
     {
         FVector OutHitLocation;
         if (GetSightRayHitLocation(OutHitLocation))
         {
             // aim towards Hit Location
-            GetControlledTank()->AimAt(OutHitLocation);
+            AimingComponent->AimAt(OutHitLocation);
         }
     }
 }
 
-ATank* ATankPlayerController::GetControlledTank() const
-{
-    return Cast<ATank>(GetPawn());
-}
+
 
 bool ATankPlayerController::GetSightRayHitLocation(FVector& OutHitLocation) const
 {
@@ -96,7 +99,7 @@ bool ATankPlayerController::GetLookVectorHitLocation(FVector& LookFrom, FVector&
     const FCollisionQueryParams CollisionQueryParams(
         FName(TEXT("")),
         false,
-        GetControlledTank()
+        ControlledTank
     );
     FHitResult OutHitResult;
     FVector StartLocation = PlayerCameraManager->GetCameraLocation();

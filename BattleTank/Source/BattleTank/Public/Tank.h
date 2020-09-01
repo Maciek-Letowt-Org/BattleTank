@@ -13,12 +13,12 @@ class BATTLETANK_API ATank final : public APawn
 {
     GENERATED_BODY()
 public:
-    void AimAt(FVector HitLocation) const;
+
     UFUNCTION(BlueprintCallable, Category="Firing")
     void Fire();
-protected:
+/*protected:
     UPROPERTY(BlueprintReadOnly)
-    class UTankAimingComponent* TankAimingComponent = nullptr;
+    class UTankAimingComponent* TankAimingComponent = nullptr;*/
 
 private:
     // Called when the game starts or when spawned
@@ -26,6 +26,7 @@ private:
     // Sets default values for this pawn's properties
     ATank();
 
+    // TODO remove wuth firing
     UPROPERTY(EditDefaultsOnly, Category="Firing")
     float LaunchSpeed = 2000; // = 2000 m/s
     UPROPERTY(EditDefaultsOnly, Category="Firing")

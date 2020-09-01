@@ -9,8 +9,7 @@
 void ATank::BeginPlay()
 {
     Super::BeginPlay();
-    UE_LOG(LogTemp, Warning, TEXT("xopac tank %s began play"), *GetName());
-    TankAimingComponent = FindComponentByClass<UTankAimingComponent>();
+ //   TankAimingComponent = FindComponentByClass<UTankAimingComponent>();
 }
 
 // Sets default values
@@ -25,7 +24,6 @@ ATank::ATank()
         RateOfFire = 1;
     }
     ReloadTimeInSeconds = 60 / RateOfFire;
-    UE_LOG(LogTemp, Warning, TEXT("xopac tank %s constructed"), *GetName());
 }
 
 void ATank::Fire()
@@ -54,12 +52,3 @@ void ATank::Fire()
     }
 }
 
-void ATank::AimAt(const FVector HitLocation) const
-{
-    if (!ensure(TankAimingComponent))
-    {
-        UE_LOG(LogTemp, Warning, TEXT("tank %s has no aiming component!"), *GetName());
-        return;
-    }
-    TankAimingComponent->AimAt(HitLocation, LaunchSpeed);
-}
