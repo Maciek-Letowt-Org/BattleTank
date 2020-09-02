@@ -2,23 +2,14 @@
 #include "TankPlayerController.h"
 #include "CollisionQueryParams.h"
 #include "Engine/World.h"
-//#include "Tank.h"
 #include "TankAimingComponent.h"
 
 // Called when the game starts or when spawned
 void ATankPlayerController::BeginPlay()
 {
     Super::BeginPlay();
-    ControlledTank = GetPawn();
-    //ATank* TankPtr = GetControlledTank();
 
-    if (!ensure(ControlledTank))
-    {
-        UE_LOG(LogTemp, Warning, TEXT("tank player controller has no pawn!"));
-        return;
-    }
-
-    AimingComponent = ControlledTank->FindComponentByClass<UTankAimingComponent>();
+    AimingComponent = GetPawn()->FindComponentByClass<UTankAimingComponent>();
     if (ensure(AimingComponent))
     {
         FoundAimingComponent(AimingComponent);
@@ -28,10 +19,6 @@ void ATankPlayerController::BeginPlay()
         UE_LOG(LogTemp, Warning, TEXT("tank player controller has no aiming component!"))
     }
 }
-/*ATank* ATankPlayerController::GetControlledTank() const
-{
-    return Cast<ATank>(GetPawn());
-}*/
 
 void ATankPlayerController::Tick(const float DeltaSeconds)
 {
@@ -51,8 +38,6 @@ void ATankPlayerController::AimTowardsCrosshair() const
         }
     }
 }
-
-
 
 bool ATankPlayerController::GetSightRayHitLocation(FVector& OutHitLocation) const
 {
@@ -96,23 +81,23 @@ bool ATankPlayerController::GetLookDirection(const FVector2D ScreenLocation, FVe
 bool ATankPlayerController::GetLookVectorHitLocation(FVector& LookFrom, FVector& OutHitLocation) const
 {
     // collision query parameters: defaultName, don't go through glass, ignore self
-    const FCollisionQueryParams CollisionQueryParams(
+    /*const FCollisionQueryParams CollisionQueryParams(
         FName(TEXT("")),
         false,
         ControlledTank
-    );
+    );*/
     FHitResult OutHitResult;
-    FVector StartLocation = PlayerCameraManager->GetCameraLocation();
-    FVector EndLocation = StartLocation + (LookFrom * LineTraceRange);
+    const FVector StartLocation = PlayerCameraManager->GetCameraLocation();
+    const FVector EndLocation = StartLocation + (LookFrom * LineTraceRange);
 
     // see what is hit up to max. range
     const bool bHit = GetWorld()->LineTraceSingleByChannel(
         OutHitResult,
         StartLocation,
         EndLocation,
-        ECC_Visibility,
+        ECC_Visibility/*,
         CollisionQueryParams,
-        FCollisionResponseParams::DefaultResponseParam
+        FCollisionResponseParams::DefaultResponseParam*/
     );
 
     if (bHit)

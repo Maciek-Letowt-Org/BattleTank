@@ -13,16 +13,10 @@ class BATTLETANK_API ATank final : public APawn
 {
     GENERATED_BODY()
 public:
-
     UFUNCTION(BlueprintCallable, Category="Firing")
     void Fire();
-/*protected:
-    UPROPERTY(BlueprintReadOnly)
-    class UTankAimingComponent* TankAimingComponent = nullptr;*/
 
 private:
-    // Called when the game starts or when spawned
-    virtual void BeginPlay() override;
     // Sets default values for this pawn's properties
     ATank();
 

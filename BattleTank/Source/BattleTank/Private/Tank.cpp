@@ -1,16 +1,7 @@
 // copyright Maciek Letowt 2020
-
-
 #include "Tank.h"
 #include "Projectile.h"
-#include "TankAimingComponent.h"
 #include "TankBarrel.h"
-
-void ATank::BeginPlay()
-{
-    Super::BeginPlay();
- //   TankAimingComponent = FindComponentByClass<UTankAimingComponent>();
-}
 
 // Sets default values
 ATank::ATank()
