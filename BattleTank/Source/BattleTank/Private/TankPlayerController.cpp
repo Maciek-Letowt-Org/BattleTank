@@ -1,6 +1,5 @@
 // copyright Maciek Letowt 2020
 #include "TankPlayerController.h"
-#include "CollisionQueryParams.h"
 #include "Engine/World.h"
 #include "TankAimingComponent.h"
 
@@ -10,6 +9,7 @@ void ATankPlayerController::BeginPlay()
     Super::BeginPlay();
 
     AimingComponent = GetPawn()->FindComponentByClass<UTankAimingComponent>();
+    
     if (ensure(AimingComponent))
     {
         FoundAimingComponent(AimingComponent);
@@ -81,11 +81,7 @@ bool ATankPlayerController::GetLookDirection(const FVector2D ScreenLocation, FVe
 bool ATankPlayerController::GetLookVectorHitLocation(FVector& LookFrom, FVector& OutHitLocation) const
 {
     // collision query parameters: defaultName, don't go through glass, ignore self
-    /*const FCollisionQueryParams CollisionQueryParams(
-        FName(TEXT("")),
-        false,
-        ControlledTank
-    );*/
+
     FHitResult OutHitResult;
     const FVector StartLocation = PlayerCameraManager->GetCameraLocation();
     const FVector EndLocation = StartLocation + (LookFrom * LineTraceRange);
@@ -95,9 +91,7 @@ bool ATankPlayerController::GetLookVectorHitLocation(FVector& LookFrom, FVector&
         OutHitResult,
         StartLocation,
         EndLocation,
-        ECC_Visibility/*,
-        CollisionQueryParams,
-        FCollisionResponseParams::DefaultResponseParam*/
+        ECC_Visibility
     );
 
     if (bHit)

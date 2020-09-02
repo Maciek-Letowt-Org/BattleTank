@@ -3,6 +3,7 @@
 
 #include "TankAimingComponent.h"
 #include "Kismet/GameplayStatics.h"
+#include "Projectile.h"
 #include "TankBarrel.h"
 #include "TankTurret.h"
 
@@ -32,6 +33,13 @@ void UTankAimingComponent::Initialise(UTankBarrel* BarrelToSet, UTankTurret* Tur
 
     Barrel = BarrelToSet;
     Turret = TurretToSet;
+    
+    if (RateOfFire <= 0.f)
+    {
+        UE_LOG(LogTemp, Warning, TEXT("tank %s aiming component has no positive rate of fire! Set to 1"), *GetOwner()->GetName());
+        RateOfFire = 1;
+    }
+    ReloadTimeInSeconds = 60 / RateOfFire;
 }
 
 void UTankAimingComponent::AimAt(const FVector HitLocation) const
@@ -103,4 +111,30 @@ void UTankAimingComponent::MoveTurretTowards(const FRotator AimRtt) const
     const FRotator DeltaRtt = AimRtt - TurretRtt;
 
     Turret->Rotate(DeltaRtt.Yaw);
+}
+
+void UTankAimingComponent::Fire()
+{
+    if (!ensure(Barrel))
+    {
+        UE_LOG(LogTemp, Warning, TEXT("tank %s has no barrel to fire!"), *GetName());
+        return;
+    }
+
+    const bool bIsReloaded = (FPlatformTime::Seconds() - LastFireTime > ReloadTimeInSeconds);
+
+    if (bIsReloaded)
+    {
+        const FVector Loc = Barrel->GetSocketLocation(FName("Projectile"));
+        const FRotator Rot = Barrel->GetSocketRotation(FName("Projectile"));
+
+        AProjectile* Projectile = GetWorld()->SpawnActor<AProjectile>(
+            ProjectileBluePrint,
+            Loc,
+            Rot
+        );
+
+        Projectile->LaunchProjectile(LaunchSpeed);
+        LastFireTime = FPlatformTime::Seconds();
+    }
 }
