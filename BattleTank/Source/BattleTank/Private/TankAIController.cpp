@@ -23,12 +23,11 @@ void ATankAIController::Tick(const float DeltaSeconds)
         UE_LOG(LogTemp, Warning, TEXT("AI Controller %s has no aiming component!"), *GetPawn()->GetName());
         return;
     }
+    
     // move towards player
     MoveToActor(PlayerTank, AcceptanceRadius);
 
     // aim towards player
-
-
     AimingComponent->AimAt(PlayerTank->GetActorLocation());
 
     //fire if ready

@@ -37,20 +37,20 @@ protected:
 private:
     // Sets default values for this component's properties
     UTankAimingComponent();
+    void MoveBarrelTowards(FRotator AimRtt) const;
+    void MoveTurretTowards(FRotator AimRtt) const;
+
+    // ------ members / properties -------------------------------
     UTankBarrel* Barrel = nullptr;
     UTankTurret* Turret = nullptr;
     
     UPROPERTY(EditDefaultsOnly, Category="Firing")
     float LaunchSpeed = 2000; // = 2000 m/s
-
-    void MoveBarrelTowards(FRotator AimRtt) const;
-    void MoveTurretTowards(FRotator AimRtt) const;
     
     UPROPERTY(EditDefaultsOnly, Category="Firing")
-    int RateOfFire = 20; // rounds per minute
-    double ReloadTimeInSeconds = 0; // 60 / RateOfFire
-    double LastFireTime = 0; // time seconds of last fire
-
+    int RateOfFire = 20;             // rounds per minute
+    double ReloadTimeInSeconds = 0; // 60/RateOfFire
+    double LastFireTime = 0;       // time seconds of last fire
 
     UPROPERTY(EditDefaultsOnly, Category="Setup")
     TSubclassOf<AProjectile> ProjectileBluePrint; // unsafe Alternative = UClass*

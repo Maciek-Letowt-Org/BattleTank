@@ -20,14 +20,16 @@ private:
     virtual void BeginPlay() override;
     // Called every frame
     virtual void Tick(float DeltaSeconds) override;
-    UTankAimingComponent* AimingComponent = nullptr;
 
     // move barrel towards position where a shot would hit where crosshair intersects world
     void AimTowardsCrosshair() const;
-
     bool GetLookDirection(FVector2D ScreenLocation, FVector& OutLookDirection) const;
     bool GetSightRayHitLocation(FVector& OutHitLocation) const;
     bool GetLookVectorHitLocation(FVector& LookFrom, FVector& OutHitLocation) const;
+    
+    // ---------------- members / properties -------------------------------------------
+    UTankAimingComponent* AimingComponent = nullptr;
+
     UPROPERTY(EditAnywhere)
     float CrossHairXLocation = 0.5;
     UPROPERTY(EditAnywhere)

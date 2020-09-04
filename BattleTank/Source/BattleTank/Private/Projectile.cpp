@@ -15,11 +15,12 @@ AProjectile::AProjectile()
     ProjectileMovement->bAutoActivate = false;
 }
 
+/*
 // Called when the game starts or when spawned
 void AProjectile::BeginPlay()
 {
     Super::BeginPlay();
-}
+}*/
 
 void AProjectile::LaunchProjectile(const float Speed) const
 {

@@ -15,7 +15,7 @@ class BATTLETANK_API ATankAIController final : public AAIController
 private:
     // Called every frame
     virtual void Tick(float DeltaSeconds) override;
-    
+    // ------- members & properties ---------------------------------
     // how close to player in cm
     UPROPERTY(EditDefaultsOnly)
     float AcceptanceRadius = 3000.f;
