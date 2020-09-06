@@ -29,16 +29,18 @@ public:
     void AimAt(FVector HitLocation) const;
     UFUNCTION(BlueprintCallable, Category="Firing")
     void Fire();
-
 protected:
     UPROPERTY(BlueprintReadOnly, Category="State")
-    EFiringState FiringState = EFiringState::Aiming;
+    EFiringState FiringState = EFiringState::Reloading;
 
 private:
+
     // Sets default values for this component's properties
     UTankAimingComponent();
     void MoveBarrelTowards(FRotator AimRtt) const;
     void MoveTurretTowards(FRotator AimRtt) const;
+    virtual void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction) override;
+    virtual void BeginPlay() override;
 
     // ------ members / properties -------------------------------
     UTankBarrel* Barrel = nullptr;

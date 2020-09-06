@@ -7772,6 +7772,8 @@
             <e p="NiagaraCommon.cpp" t="Include" />
             <e p="NiagaraComponent.cpp" t="Include" />
             <e p="NiagaraComponentPool.cpp" t="Include" />
+            <e p="NiagaraComponentRemoveFromPool.cpp" t="Include" />
+            <e p="NiagaraComponentRemoveFromPool.h" t="Include" />
             <e p="NiagaraConstants.cpp" t="Include" />
             <e p="NiagaraCrashReporterHandler.cpp" t="Include" />
             <e p="NiagaraDataInterface.cpp" t="Include" />
@@ -7819,6 +7821,8 @@
             <e p="NiagaraParameters.cpp" t="Include" />
             <e p="NiagaraParameterStore.cpp" t="Include" />
             <e p="NiagaraPlatformSet.cpp" t="Include" />
+            <e p="NiagaraPrecompileContainer.cpp" t="Include" />
+            <e p="NiagaraPrecompileContainer.h" t="Include" />
             <e p="NiagaraPreviewGrid.cpp" t="Include" />
             <e p="NiagaraRenderer.cpp" t="Include" />
             <e p="NiagaraRendererLights" t="Include" />
@@ -8134,6 +8138,8 @@
               <e p="NiagaraParameterViewModel.cpp" t="Include" />
               <e p="NiagaraParameterViewModel.h" t="Include" />
               <e p="NiagaraScratchPadScriptViewModel.cpp" t="Include" />
+              <e p="NiagaraScratchPadUtilities.cpp" t="Include" />
+              <e p="NiagaraScratchPadUtilities.h" t="Include" />
               <e p="NiagaraScratchPadViewModel.cpp" t="Include" />
               <e p="NiagaraScriptGraphViewModel.cpp" t="Include" />
               <e p="NiagaraScriptGraphViewModel.h" t="Include" />
@@ -11734,6 +11740,15 @@
       </e>
       <e p="OnlineSubsystemGooglePlay.uplugin" t="Include" />
       <e p="source" t="Include">
+        <e p="Java" t="Include">
+          <e p="com" t="Include">
+            <e p="epicgames" t="Include">
+              <e p="ue4" t="Include">
+                <e p="GooglePlayStoreHelper.java" t="Include" />
+              </e>
+            </e>
+          </e>
+        </e>
         <e p="OnlineSubsystemGooglePlay.Build.cs" t="Include" />
         <e p="OnlineSubsystemGooglePlay_UPL.xml" t="Include" />
         <e p="Private" t="Include">
@@ -42740,6 +42755,8 @@
         <e p="NVIDIA" t="Include">
           <e p="NVaftermath" t="Include">
             <e p="Aftermath.tps" t="Include" />
+            <e p="Defines.h" t="Include" />
+            <e p="GFSDK_Aftermath.h" t="Include" />
             <e p="NVaftermath.Build.cs" t="Include" />
           </e>
           <e p="nvapi" t="Include">
@@ -42972,9 +42989,11 @@
     <e p="G:\source\repos\BattleTank\BattleTank" t="IncludeFlat">
       <e p=".gitignore" t="Include" />
       <e p="BattleTank.sln" t="IncludeFlat" />
+      <e p="BattleTank.sln.DotSettings.user" t="Include" />
       <e p="BattleTank.uproject" t="Include" />
       <e p="Config" t="Include">
         <e p="DefaultEditor.ini" t="Include" />
+        <e p="DefaultEditorPerProjectUserSettings.ini" t="Include" />
         <e p="DefaultEngine.ini" t="Include" />
         <e p="DefaultGame.ini" t="Include" />
         <e p="DefaultInput.ini" t="Include" />
