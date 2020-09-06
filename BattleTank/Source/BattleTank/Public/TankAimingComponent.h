@@ -43,16 +43,16 @@ private:
     // ------ members / properties -------------------------------
     UTankBarrel* Barrel = nullptr;
     UTankTurret* Turret = nullptr;
-    
+
     UPROPERTY(EditDefaultsOnly, Category="Firing")
     float LaunchSpeed = 2000; // = 2000 m/s
-    
+
     UPROPERTY(EditDefaultsOnly, Category="Firing")
-    int RateOfFire = 20;             // rounds per minute
+    int RateOfFire = 20; // rounds per minute
     double ReloadTimeInSeconds = 0; // 60/RateOfFire
-    double LastFireTime = 0;       // time seconds of last fire
+    double LastFireTime = 0; // time seconds of last fire
 
     UPROPERTY(EditDefaultsOnly, Category="Setup")
-    TSubclassOf<AProjectile> ProjectileBluePrint; // unsafe Alternative = UClass*
+    TSubclassOf<AProjectile> ProjectileBluePrint;
     //UClass* ProjectileBluePrint = nullptr; // unsafe - makes editor crash
 };

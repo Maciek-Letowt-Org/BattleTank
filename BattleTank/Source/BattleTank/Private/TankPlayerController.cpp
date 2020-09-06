@@ -9,7 +9,7 @@ void ATankPlayerController::BeginPlay()
     Super::BeginPlay();
 
     AimingComponent = GetPawn()->FindComponentByClass<UTankAimingComponent>();
-    
+
     if (ensure(AimingComponent))
     {
         FoundAimingComponent(AimingComponent);
@@ -80,8 +80,6 @@ bool ATankPlayerController::GetLookDirection(const FVector2D ScreenLocation, FVe
 
 bool ATankPlayerController::GetLookVectorHitLocation(FVector& LookFrom, FVector& OutHitLocation) const
 {
-    // collision query parameters: defaultName, don't go through glass, ignore self
-
     FHitResult OutHitResult;
     const FVector StartLocation = PlayerCameraManager->GetCameraLocation();
     const FVector EndLocation = StartLocation + (LookFrom * LineTraceRange);

@@ -1,6 +1,4 @@
 // copyright Maciek Letowt 2020
-
-
 #include "Projectile.h"
 #include "GameFramework/ProjectileMovementComponent.h"
 
@@ -14,13 +12,6 @@ AProjectile::AProjectile()
     ProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>(FName("ProjectileMovement"));
     ProjectileMovement->bAutoActivate = false;
 }
-
-/*
-// Called when the game starts or when spawned
-void AProjectile::BeginPlay()
-{
-    Super::BeginPlay();
-}*/
 
 void AProjectile::LaunchProjectile(const float Speed) const
 {
