@@ -26,7 +26,7 @@ class BATTLETANK_API UTankAimingComponent final : public UActorComponent
 public:
     UFUNCTION(BlueprintCallable, Category="Setup")
     void Initialise(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet);
-    void AimAt(FVector HitLocation) const;
+    void AimAt(FVector HitLocation);
     UFUNCTION(BlueprintCallable, Category="Firing")
     void Fire();
 protected:
@@ -37,14 +37,20 @@ private:
 
     // Sets default values for this component's properties
     UTankAimingComponent();
-    void MoveBarrelTowards(FRotator AimRtt) const;
-    void MoveTurretTowards(FRotator AimRtt) const;
-    virtual void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction) override;
+    void MoveBarrelTowards(float AimPitch);
+    void MoveTurretTowards(float AimYaw);
+    virtual void TickComponent(float DeltaTime, enum ELevelTick TickType,
+                               FActorComponentTickFunction* ThisTickFunction) override;
     virtual void BeginPlay() override;
 
     // ------ members / properties -------------------------------
     UTankBarrel* Barrel = nullptr;
     UTankTurret* Turret = nullptr;
+    bool bBarrelMoving = false;
+    bool bTurretMoving = false;
+
+    UPROPERTY(EditDefaultsOnly, Category="Firing")
+    float AimTolerance = 0.01; // degrees from crosshair target
 
     UPROPERTY(EditDefaultsOnly, Category="Firing")
     float LaunchSpeed = 2000; // = 2000 m/s
