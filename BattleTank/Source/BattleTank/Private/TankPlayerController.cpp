@@ -28,6 +28,11 @@ void ATankPlayerController::Tick(const float DeltaSeconds)
 
 void ATankPlayerController::AimTowardsCrosshair() const
 {
+    if (!GetPawn()) // if player has depossessed tank (but why is this req when we have if aiming component below?)
+    {
+        return;
+    }
+
     if (AimingComponent)
     {
         FVector OutHitLocation;

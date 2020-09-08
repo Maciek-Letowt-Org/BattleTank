@@ -100,12 +100,12 @@ void UTankAimingComponent::MoveBarrelTowards(const float AimPitch)
 
     // work out rotation difference between current barrel rotation & aim direction rotation
     const float BarrelPitch = Barrel->GetForwardVector().Rotation().Clamp().Pitch;
-    const float DeltaPitch = AimPitch - BarrelPitch;
+    float DeltaPitch = AimPitch - BarrelPitch;
 
     if (abs(DeltaPitch) > AimTolerance)
     {
         bBarrelMoving = true;
-        Barrel->Elevate(DeltaPitch);
+        Barrel->Elevate(DeltaDegrees(DeltaPitch));
     }
     else
     {
@@ -128,17 +128,7 @@ void UTankAimingComponent::MoveTurretTowards(const float AimYaw)
     if (abs(DeltaYaw) > AimTolerance)
     {
         bTurretMoving = true;
-
-        if (DeltaYaw > 180)
-        {
-            DeltaYaw = DeltaYaw - 360;
-        }
-        else if (DeltaYaw < -180)
-        {
-            DeltaYaw = DeltaYaw + 360;
-        }
-
-        Turret->Rotate(DeltaYaw);
+        Turret->Rotate(DeltaDegrees(DeltaYaw));
     }
     else
     {
@@ -146,9 +136,23 @@ void UTankAimingComponent::MoveTurretTowards(const float AimYaw)
     }
 }
 
-void UTankAimingComponent::TickComponent(float DeltaTime, ELevelTick TickType,
+constexpr float UTankAimingComponent::DeltaDegrees(float& Delta)
+{
+    if (Delta > 180)
+    {
+        Delta = Delta - 360;
+    }
+    else if (Delta < -180)
+    {
+        Delta = Delta + 360;
+    }
+    return Delta;
+}
+
+void UTankAimingComponent::TickComponent(const float DeltaTime, const ELevelTick TickType,
                                          FActorComponentTickFunction* ThisTickFunction)
 {
+    Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
     if ((GetWorld()->GetTimeSeconds() - LastFireTime) < ReloadTimeInSeconds)
     {
         FiringState = EFiringState::Reloading;
