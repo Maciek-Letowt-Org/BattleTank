@@ -21,7 +21,10 @@ private:
     UTankTrack();
     virtual void TickComponent(float DeltaTime, ELevelTick TickType,
                                FActorComponentTickFunction* ThisTickFunction) override;
-
+    virtual void BeginPlay() override;
+    UFUNCTION(BlueprintCallable, Category="Firing")
+    void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent,
+               FVector NormalImpulse, const FHitResult& Hit);
     // ------ members / properties -------------------------------
-    UStaticMeshComponent* TankRoot = nullptr;
+    // UStaticMeshComponent* TankRoot = nullptr;
 };

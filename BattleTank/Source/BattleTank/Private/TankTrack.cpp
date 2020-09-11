@@ -6,14 +6,27 @@ UTankTrack::UTankTrack()
     // Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
     // off to improve performance if you don't need them.
     PrimaryComponentTick.bCanEverTick = true;
-    const auto TankBody = GetOwner()->GetRootComponent();
+}
+
+void UTankTrack::BeginPlay()
+{
+    Super::BeginPlay();
+    OnComponentHit.AddDynamic(this, &UTankTrack::OnHit);
+    /*USceneComponent* TankBody = GetOwner()->GetRootComponent();
     
     if (!ensure(TankBody))
     {
         UE_LOG(LogTemp, Warning, TEXT("tank %s track %s cannot find a tank body!"), *GetOwner()->GetName(), *GetName());
         return;
     }
-    TankRoot = Cast<UStaticMeshComponent>(TankBody);
+    TankRoot = Cast<UStaticMeshComponent>(TankBody);*/
+}
+
+void UTankTrack::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent,
+                       FVector NormalImpulse, const FHitResult& Hit)
+{
+    UE_LOG(LogTemp, Warning, TEXT("tank %s track %s is hitting the ground"), *GetOwner()->GetName(),
+           *GetName());
 }
 
 void UTankTrack::TickComponent(const float DeltaTime, const ELevelTick TickType,
@@ -21,18 +34,24 @@ void UTankTrack::TickComponent(const float DeltaTime, const ELevelTick TickType,
 {
     Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
+    UStaticMeshComponent* TankRoot = Cast<UStaticMeshComponent>(GetOwner()->GetRootComponent());
+
     if (!ensure(TankRoot))
     {
-        UE_LOG(LogTemp, Warning, TEXT("tank %s track %s cannot tick a tank body!"), *GetOwner()->GetName(), *GetName());
+        UE_LOG(LogTemp, Warning, TEXT("tank %s track %s cannot throttle a tank body!"), *GetOwner()->GetName(),
+               *GetName());
         return;
     }
+
     // correct sidewards slippage
     const FVector SlippageUnitVector = GetRightVector();
     const float SlippageSpeed = FVector::DotProduct(SlippageUnitVector, GetComponentVelocity());
     const FVector SlippageVelocity = SlippageSpeed * SlippageUnitVector;
+
     // a = v/t
     const FVector SlippageAcceleration = SlippageVelocity / DeltaTime;
     const FVector CorrectionAcceleration = SlippageAcceleration * -1;
+
     // F = m.a for 2 tracks
     const FVector CorrectionForce = TankRoot->GetMass() * CorrectionAcceleration / 2;
     TankRoot->AddForce(CorrectionForce);
@@ -40,13 +59,27 @@ void UTankTrack::TickComponent(const float DeltaTime, const ELevelTick TickType,
 
 void UTankTrack::SetThrottle(float Throttle) const
 {
-    if (!ensure(TankRoot))
+    // limit speed
+    const FVector ForwardUnitVector = GetForwardVector();
+    const float ForwardSpeed = FVector::DotProduct(ForwardUnitVector, GetComponentVelocity());
+
+    if (ForwardSpeed > 1500) // 1500 cm/s = 54 km/h
     {
-        UE_LOG(LogTemp, Warning, TEXT("tank %s track %s cannot throttle a tank body!"), *GetOwner()->GetName(), *GetName());
         return;
     }
+
+    UStaticMeshComponent* TankRoot = Cast<UStaticMeshComponent>(GetOwner()->GetRootComponent());
+
+    if (!ensure(TankRoot))
+    {
+        UE_LOG(LogTemp, Warning, TEXT("tank %s track %s cannot throttle a tank body!"), *GetOwner()->GetName(),
+               *GetName());
+        return;
+    }
+
     Throttle = FMath::Clamp<float>(Throttle, -1.f, +1.f);
     const FVector ForceApplied = GetForwardVector() * Throttle * TrackMaxDrivingForce;
     const FVector ForceLocation = GetComponentLocation();
+
     TankRoot->AddForceAtLocation(ForceApplied, ForceLocation);
 }

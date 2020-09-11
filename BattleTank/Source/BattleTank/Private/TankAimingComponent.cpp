@@ -19,6 +19,7 @@ UTankAimingComponent::UTankAimingComponent()
 
 void UTankAimingComponent::BeginPlay()
 {
+    Super::BeginPlay();
     // prevents AI from firing as soon as the game starts
     LastFireTime = GetWorld()->GetTimeSeconds();
 }
