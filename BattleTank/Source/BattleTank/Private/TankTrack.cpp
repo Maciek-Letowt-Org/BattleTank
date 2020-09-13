@@ -12,14 +12,6 @@ void UTankTrack::BeginPlay()
 {
     Super::BeginPlay();
     OnComponentHit.AddDynamic(this, &UTankTrack::OnHit);
-    /*USceneComponent* TankBody = GetOwner()->GetRootComponent();
-    
-    if (!ensure(TankBody))
-    {
-        UE_LOG(LogTemp, Warning, TEXT("tank %s track %s cannot find a tank body!"), *GetOwner()->GetName(), *GetName());
-        return;
-    }
-    TankRoot = Cast<UStaticMeshComponent>(TankBody);*/
 }
 
 void UTankTrack::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent,
@@ -35,7 +27,6 @@ void UTankTrack::TickComponent(const float DeltaTime, const ELevelTick TickType,
     Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
     UStaticMeshComponent* TankRoot = Cast<UStaticMeshComponent>(GetOwner()->GetRootComponent());
-
     if (!ensure(TankRoot))
     {
         UE_LOG(LogTemp, Warning, TEXT("tank %s track %s cannot throttle a tank body!"), *GetOwner()->GetName(),
@@ -59,21 +50,23 @@ void UTankTrack::TickComponent(const float DeltaTime, const ELevelTick TickType,
 
 void UTankTrack::SetThrottle(float Throttle) const
 {
+    UStaticMeshComponent* TankRoot = Cast<UStaticMeshComponent>(GetOwner()->GetRootComponent());
+    if (!ensure(TankRoot))
+    {
+        UE_LOG(LogTemp, Warning, TEXT("tank %s track %s cannot throttle a tank body!"), *GetOwner()->GetName(),
+               *GetName());
+        return;
+    }
+
     // limit speed
     const FVector ForwardUnitVector = GetForwardVector();
     const float ForwardSpeed = FVector::DotProduct(ForwardUnitVector, GetComponentVelocity());
 
     if (ForwardSpeed > 1500) // 1500 cm/s = 54 km/h
     {
-        return;
-    }
-
-    UStaticMeshComponent* TankRoot = Cast<UStaticMeshComponent>(GetOwner()->GetRootComponent());
-
-    if (!ensure(TankRoot))
-    {
-        UE_LOG(LogTemp, Warning, TEXT("tank %s track %s cannot throttle a tank body!"), *GetOwner()->GetName(),
-               *GetName());
+        UE_LOG(LogTemp, Warning, TEXT("tank %s track %s cannot throttle at speed %f!"), *GetOwner()->GetName(),
+               *GetName(),
+               ForwardSpeed);
         return;
     }
 

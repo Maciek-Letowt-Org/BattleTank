@@ -29,10 +29,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BattleTank/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BattleTank/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Maps/BattleGround.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/BattleGround.umap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Vehicles/BP_Tank.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Vehicles/BP_Tank.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Saved/Config/Windows/Editor.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/Config/Windows/Editor.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Saved/AutoScreenshot.png" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/AutoScreenshot.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Saved/Autosaves/PackageRestoreData.json" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/Autosaves/PackageRestoreData.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Saved/Config/Windows/EditorPerProjectUserSettings.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/Config/Windows/EditorPerProjectUserSettings.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Saved/Config/Windows/Engine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/Config/Windows/Engine.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/BattleTank/Private/TankAimingComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BattleTank/Private/TankAimingComponent.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/BattleTank/Private/TankTrack.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BattleTank/Private/TankTrack.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/BattleTank/Public/TankTrack.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BattleTank/Public/TankTrack.h" afterDir="false" />
     </list>
