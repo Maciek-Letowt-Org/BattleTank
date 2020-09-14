@@ -17,8 +17,8 @@ void UTankTrack::BeginPlay()
 void UTankTrack::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent,
                        FVector NormalImpulse, const FHitResult& Hit)
 {
-    UE_LOG(LogTemp, Warning, TEXT("tank %s track %s is hitting the ground"), *GetOwner()->GetName(),
-           *GetName());
+    /*UE_LOG(LogTemp, Warning, TEXT("tank %s track %s is hitting the ground"), *GetOwner()->GetName(),
+           *GetName());*/
 }
 
 void UTankTrack::TickComponent(const float DeltaTime, const ELevelTick TickType,
@@ -59,7 +59,7 @@ void UTankTrack::SetThrottle(float Throttle) const
     }
 
     // limit speed
-    const FVector ForwardUnitVector = GetForwardVector();
+    /*const FVector ForwardUnitVector = GetForwardVector();
     const float ForwardSpeed = FVector::DotProduct(ForwardUnitVector, GetComponentVelocity());
 
     if (ForwardSpeed > 1500) // 1500 cm/s = 54 km/h
@@ -68,7 +68,7 @@ void UTankTrack::SetThrottle(float Throttle) const
                *GetName(),
                ForwardSpeed);
         return;
-    }
+    }*/
 
     Throttle = FMath::Clamp<float>(Throttle, -1.f, +1.f);
     const FVector ForceApplied = GetForwardVector() * Throttle * TrackMaxDrivingForce;
