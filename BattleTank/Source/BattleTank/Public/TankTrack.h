@@ -16,7 +16,7 @@ public:
 
     // ------ members / properties -------------------------------
     UPROPERTY(EditDefaultsOnly)
-    float TrackMaxDrivingForce = 50000.f; // force in Newtons
+    float TrackMaxDrivingForce = 50000000.f; // force in Newtons
 private:
     UTankTrack();
 

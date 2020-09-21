@@ -23,7 +23,10 @@ void UTankAimingComponent::BeginPlay()
     // prevents AI from firing as soon as the game starts
     LastFireTime = GetWorld()->GetTimeSeconds();
 }
-
+EFiringState UTankAimingComponent::GetFiringState() const
+{
+    return FiringState;
+}
 void UTankAimingComponent::Initialise(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet)
 {
     if (!ensure(BarrelToSet))
@@ -199,3 +202,5 @@ void UTankAimingComponent::Fire()
         FiringState = EFiringState::Reloading;
     }
 }
+
+

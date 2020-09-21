@@ -15,7 +15,7 @@ void ATankAIController::Tick(const float DeltaSeconds)
         UE_LOG(LogTemp, Warning, TEXT("AI Controller %s cannot find PLAYER tank!"), *GetPawn()->GetName());
         return;
     }
-    
+
     const auto AimingComponent = GetPawn()->FindComponentByClass<UTankAimingComponent>();
 
     if (!ensure(AimingComponent))
@@ -23,13 +23,16 @@ void ATankAIController::Tick(const float DeltaSeconds)
         UE_LOG(LogTemp, Warning, TEXT("AI Controller %s has no aiming component!"), *GetPawn()->GetName());
         return;
     }
-    
+
     // move towards player
     MoveToActor(PlayerTank, AcceptanceRadius);
 
     // aim towards player
     AimingComponent->AimAt(PlayerTank->GetActorLocation());
 
-    //fire if ready
-    AimingComponent->Fire();
+    //fire if aim locked
+    if (AimingComponent->GetFiringState() == EFiringState::Locked)
+    {
+        AimingComponent->Fire();
+    }
 }

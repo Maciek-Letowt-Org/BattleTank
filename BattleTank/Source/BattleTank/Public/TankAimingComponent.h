@@ -29,6 +29,8 @@ public:
     void AimAt(FVector HitLocation);
     UFUNCTION(BlueprintCallable, Category="Firing")
     void Fire();
+
+    EFiringState GetFiringState() const;
 protected:
     UPROPERTY(BlueprintReadOnly, Category="State")
     EFiringState FiringState = EFiringState::Reloading;
@@ -54,7 +56,7 @@ private:
     float AimTolerance = 0.01; // degrees from crosshair target
 
     UPROPERTY(EditDefaultsOnly, Category="Firing")
-    float LaunchSpeed = 2000; // = 2000 m/s
+    float LaunchSpeed = 8000; // = 8000 m/s
 
     UPROPERTY(EditDefaultsOnly, Category="Firing")
     int RateOfFire = 20; // rounds per minute
