@@ -43699,6 +43699,7 @@
             <e p="TankBarrel.cpp" t="Include" />
             <e p="TankMovementComponent.cpp" t="Include" />
             <e p="TankPlayerController.cpp" t="Include" />
+            <e p="TankPlayerController.cpp.rej" t="Include" />
             <e p="TankPlayerUI.cpp" t="Include" />
             <e p="TankTrack.cpp" t="Include" />
             <e p="TankTurret.cpp" t="Include" />

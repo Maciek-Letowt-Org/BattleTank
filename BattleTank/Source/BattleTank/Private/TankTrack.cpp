@@ -69,11 +69,12 @@ void UTankTrack::DriveTrack() const
         return;
     }*/
 
-
     const FVector ForceApplied = GetForwardVector() * CurrentThrottle * TrackMaxDrivingForce;
     const FVector ForceLocation = GetComponentLocation();
 
     TankRoot->AddForceAtLocation(ForceApplied, ForceLocation);
+    /*UE_LOG(LogTemp, Warning, TEXT("tank %s track %s applied a force of %s to root %s"), *GetOwner()->GetName(),
+           *GetName(), *ForceApplied.ToCompactString(), *TankRoot->GetName());*/
 }
 
 void UTankTrack::SetThrottle(const float Throttle)
