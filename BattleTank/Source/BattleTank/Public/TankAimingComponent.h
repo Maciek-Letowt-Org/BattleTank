@@ -9,7 +9,8 @@ enum class EFiringState : uint8
 {
     Reloading,
     Aiming,
-    Locked
+    Locked,
+    NoAmmo
 };
 
 class UTankBarrel; // Forward Declaration instead of include
@@ -31,6 +32,9 @@ public:
     void Fire();
 
     EFiringState GetFiringState() const;
+
+    UFUNCTION(BlueprintCallable, Category="Firing")
+    int GetRoundsLeft() const;
 protected:
     UPROPERTY(BlueprintReadOnly, Category="State")
     EFiringState FiringState = EFiringState::Reloading;
@@ -53,11 +57,15 @@ private:
     bool bTurretMoving = false;
 
     UPROPERTY(EditDefaultsOnly, Category="Firing")
+    int RoundsLeft = 3; // rounds on board
+
+    UPROPERTY(EditDefaultsOnly, Category="Firing")
     float AimTolerance = 0.01; // degrees from crosshair target
 
     UPROPERTY(EditDefaultsOnly, Category="Firing")
     float LaunchSpeed = 8000; // = 8000 m/s
 
+    
     UPROPERTY(EditDefaultsOnly, Category="Firing")
     int RateOfFire = 20; // rounds per minute
     double ReloadTimeInSeconds = 0; // 60/RateOfFire

@@ -23,10 +23,17 @@ void UTankAimingComponent::BeginPlay()
     // prevents AI from firing as soon as the game starts
     LastFireTime = GetWorld()->GetTimeSeconds();
 }
+
 EFiringState UTankAimingComponent::GetFiringState() const
 {
     return FiringState;
 }
+
+int UTankAimingComponent::GetRoundsLeft() const
+{
+    return RoundsLeft;
+}
+
 void UTankAimingComponent::Initialise(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet)
 {
     if (!ensure(BarrelToSet))
@@ -157,7 +164,12 @@ void UTankAimingComponent::TickComponent(const float DeltaTime, const ELevelTick
                                          FActorComponentTickFunction* ThisTickFunction)
 {
     Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-    if ((GetWorld()->GetTimeSeconds() - LastFireTime) < ReloadTimeInSeconds)
+
+    if (RoundsLeft < 1)
+    {
+        FiringState = EFiringState::NoAmmo;
+    }
+    else if ((GetWorld()->GetTimeSeconds() - LastFireTime) < ReloadTimeInSeconds)
     {
         FiringState = EFiringState::Reloading;
     }
@@ -173,34 +185,35 @@ void UTankAimingComponent::TickComponent(const float DeltaTime, const ELevelTick
 
 void UTankAimingComponent::Fire()
 {
-    if (FiringState != EFiringState::Reloading)
+    // only fire if locked or reloading
+    if (FiringState == EFiringState::Reloading || FiringState == EFiringState::NoAmmo)
     {
-        if (!ensure(Barrel))
-        {
-            UE_LOG(LogTemp, Warning, TEXT("tank %s aiming component has no barrel to fire!"), *GetOwner()->GetName());
-            return;
-        }
-
-        if (!ensure(ProjectileBluePrint))
-        {
-            UE_LOG(LogTemp, Warning, TEXT("tank %s aiming component has no projectile blueprint!"),
-                   *GetOwner()->GetName());
-            return;
-        }
-
-        const FVector Loc = Barrel->GetSocketLocation(FName("Projectile"));
-        const FRotator Rot = Barrel->GetSocketRotation(FName("Projectile"));
-
-        AProjectile* Projectile = GetWorld()->SpawnActor<AProjectile>(
-            ProjectileBluePrint,
-            Loc,
-            Rot
-        );
-
-        Projectile->LaunchProjectile(LaunchSpeed);
-        LastFireTime = GetWorld()->GetTimeSeconds();
-        FiringState = EFiringState::Reloading;
+        return;
     }
+
+    if (!ensure(Barrel))
+    {
+        UE_LOG(LogTemp, Warning, TEXT("tank %s aiming component has no barrel to fire!"), *GetOwner()->GetName());
+        return;
+    }
+
+    if (!ensure(ProjectileBluePrint))
+    {
+        UE_LOG(LogTemp, Warning, TEXT("tank %s aiming component has no projectile blueprint!"),
+               *GetOwner()->GetName());
+        return;
+    }
+
+    const FVector Loc = Barrel->GetSocketLocation(FName("Projectile"));
+    const FRotator Rot = Barrel->GetSocketRotation(FName("Projectile"));
+
+    AProjectile* Projectile = GetWorld()->SpawnActor<AProjectile>(
+        ProjectileBluePrint,
+        Loc,
+        Rot
+    );
+
+    Projectile->LaunchProjectile(LaunchSpeed);
+    LastFireTime = GetWorld()->GetTimeSeconds();
+    RoundsLeft--;
 }
-
-

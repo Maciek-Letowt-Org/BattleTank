@@ -7,16 +7,16 @@
 #include "TankPlayerUI.generated.h"
 
 /**
- * 
+ * class to control the HUD
  */
 UCLASS()
-class BATTLETANK_API UTankPlayerUI : public UUserWidget
+class BATTLETANK_API UTankPlayerUI final : public UUserWidget
 {
     GENERATED_BODY()
     UPROPERTY(meta = (BindWidget))
     class UCanvasPanel* Panel;
     UPROPERTY(meta = (BindWidget))
     class UImage* AimPoint;
-    // UPROPERTY(meta = (BindWidget))
-    //    class UTextBlock* AmmoText;
+    UPROPERTY(meta = (BindWidget))
+    class UTextBlock* AmmoText;
 };

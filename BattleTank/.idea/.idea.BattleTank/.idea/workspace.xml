@@ -28,15 +28,17 @@
   <component name="ChangeListManager">
     <list default="true" id="7dce812d-bdad-4534-a70e-ef33f7da05c9" name="Default Changelist" comment="After Lesson 285">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BattleTank/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BattleTank/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Gameplay/BP_TankPlayerController.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Gameplay/BP_TankPlayerController.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/BattleGround.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/BattleGround.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Ui/UI_TankPlayer.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Ui/UI_TankPlayer.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Vehicles/BP_Tank1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Vehicles/BP_Tank1.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Saved/AutoScreenshot.png" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/AutoScreenshot.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Saved/Autosaves/PackageRestoreData.json" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/Autosaves/PackageRestoreData.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Saved/Config/Windows/EditorPerProjectUserSettings.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/Config/Windows/EditorPerProjectUserSettings.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/BattleTank/Private/TankAIController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BattleTank/Private/TankAIController.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Saved/Config/Windows/Engine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/Config/Windows/Engine.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/BattleTank/Private/TankAimingComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BattleTank/Private/TankAimingComponent.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/BattleTank/Private/TankPlayerController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BattleTank/Private/TankPlayerController.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/BattleTank/Public/TankAIController.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BattleTank/Public/TankAIController.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/BattleTank/Public/TankAimingComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BattleTank/Public/TankAimingComponent.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/BattleTank/Public/TankTrack.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BattleTank/Public/TankTrack.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/BattleTank/Public/TankPlayerUI.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BattleTank/Public/TankPlayerUI.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +101,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Source/BattleTank/Private/TankPlayerUI.cpp" />
-        <option value="$PROJECT_DIR$/Source/BattleTank/Public/TankPlayerUI.h" />
         <option value="$PROJECT_DIR$/Source/BattleTank/Private/TankTurret.cpp" />
         <option value="$PROJECT_DIR$/Source/BattleTank/Private/TankBarrel.cpp" />
         <option value="$PROJECT_DIR$/Source/BattleTank/Public/TankBarrel.h" />
@@ -114,10 +115,11 @@
         <option value="$PROJECT_DIR$/Source/BattleTank/Private/TankTrack.cpp" />
         <option value="$PROJECT_DIR$/Source/BattleTank/Public/TankTrack.h" />
         <option value="$PROJECT_DIR$/Source/BattleTank/Private/TankPlayerController.cpp" />
-        <option value="$PROJECT_DIR$/Source/BattleTank/Private/TankAimingComponent.cpp" />
-        <option value="$PROJECT_DIR$/Source/BattleTank/Public/TankAimingComponent.h" />
         <option value="$PROJECT_DIR$/Source/BattleTank/Private/TankAIController.cpp" />
         <option value="$PROJECT_DIR$/Source/BattleTank/Public/TankAIController.h" />
+        <option value="$PROJECT_DIR$/Source/BattleTank/Public/TankPlayerUI.h" />
+        <option value="$PROJECT_DIR$/Source/BattleTank/Public/TankAimingComponent.h" />
+        <option value="$PROJECT_DIR$/Source/BattleTank/Private/TankAimingComponent.cpp" />
       </list>
     </option>
   </component>
