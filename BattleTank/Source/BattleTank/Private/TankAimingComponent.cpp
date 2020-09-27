@@ -29,7 +29,7 @@ EFiringState UTankAimingComponent::GetFiringState() const
     return FiringState;
 }
 
-int UTankAimingComponent::GetRoundsLeft() const
+int32 UTankAimingComponent::GetRoundsLeft() const
 {
     return RoundsLeft;
 }
@@ -147,7 +147,7 @@ void UTankAimingComponent::MoveTurretTowards(const float AimYaw)
     }
 }
 
-constexpr float UTankAimingComponent::DeltaDegrees(float& Delta)
+float UTankAimingComponent::DeltaDegrees(float& Delta)
 {
     if (Delta > 180)
     {

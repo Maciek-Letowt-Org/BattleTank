@@ -34,7 +34,8 @@ public:
     EFiringState GetFiringState() const;
 
     UFUNCTION(BlueprintCallable, Category="Firing")
-    int GetRoundsLeft() const;
+    int32 GetRoundsLeft() const;
+
 protected:
     UPROPERTY(BlueprintReadOnly, Category="State")
     EFiringState FiringState = EFiringState::Reloading;
@@ -44,11 +45,17 @@ private:
     // Sets default values for this component's properties
     UTankAimingComponent();
     void MoveBarrelTowards(float AimPitch);
-    static constexpr float DeltaDegrees(float& Delta);
+    static float DeltaDegrees(float& Delta);
     void MoveTurretTowards(float AimYaw);
     virtual void TickComponent(float DeltaTime, enum ELevelTick TickType,
                                FActorComponentTickFunction* ThisTickFunction) override;
     virtual void BeginPlay() override;
+
+    UFUNCTION(BlueprintCallable, Category="Setup") // created this method for the construction script in the blueprint
+    void SetProjectileBluePrint(const TSubclassOf<AProjectile>ProjectileBP)
+    {
+        ProjectileBluePrint = ProjectileBP;
+    }
 
     // ------ members / properties -------------------------------
     UTankBarrel* Barrel = nullptr;
@@ -57,7 +64,7 @@ private:
     bool bTurretMoving = false;
 
     UPROPERTY(EditDefaultsOnly, Category="Firing")
-    int RoundsLeft = 3; // rounds on board
+    int32 RoundsLeft = 99; // rounds on board
 
     UPROPERTY(EditDefaultsOnly, Category="Firing")
     float AimTolerance = 0.01; // degrees from crosshair target
@@ -65,13 +72,13 @@ private:
     UPROPERTY(EditDefaultsOnly, Category="Firing")
     float LaunchSpeed = 8000; // = 8000 m/s
 
-    
     UPROPERTY(EditDefaultsOnly, Category="Firing")
-    int RateOfFire = 20; // rounds per minute
+    int32 RateOfFire = 20; // rounds per minute
     double ReloadTimeInSeconds = 0; // 60/RateOfFire
     double LastFireTime = 0; // time seconds of last fire
 
     UPROPERTY(EditDefaultsOnly, Category="Setup")
     TSubclassOf<AProjectile> ProjectileBluePrint;
+
     //UClass* ProjectileBluePrint = nullptr; // unsafe - makes editor crash
 };

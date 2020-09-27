@@ -27,12 +27,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7dce812d-bdad-4534-a70e-ef33f7da05c9" name="Default Changelist" comment="After Lesson 285">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.BattleTank/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BattleTank/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Maps/BattleGround.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/BattleGround.umap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Vehicles/BP_Tank1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Vehicles/BP_Tank1.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Saved/Autosaves/PackageRestoreData.json" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/Autosaves/PackageRestoreData.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Saved/Config/Windows/Editor.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/Config/Windows/Editor.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Vehicles/SM_TankBarrel.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Vehicles/SM_TankBarrel.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Weapon/BP_Mortar.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Weapon/BP_Mortar.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Weapon/BP_Projectile.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Saved/AutoScreenshot.png" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/AutoScreenshot.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Saved/Config/Windows/EditorPerProjectUserSettings.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/Config/Windows/EditorPerProjectUserSettings.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Saved/Config/Windows/Engine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/Config/Windows/Engine.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/BattleTank/Private/Projectile.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BattleTank/Private/Projectile.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/BattleTank/Private/TankAimingComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BattleTank/Private/TankAimingComponent.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/BattleTank/Public/Projectile.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BattleTank/Public/Projectile.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/BattleTank/Public/TankAimingComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BattleTank/Public/TankAimingComponent.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,18 +108,18 @@
         <option value="$PROJECT_DIR$/Source/BattleTank/Private/Tank.cpp" />
         <option value="$PROJECT_DIR$/Source/BattleTank/Public/Tank.h" />
         <option value="$PROJECT_DIR$/Source/BattleTank/Public/TankPlayerController.h" />
-        <option value="$PROJECT_DIR$/Source/BattleTank/Public/Projectile.h" />
-        <option value="$PROJECT_DIR$/Source/BattleTank/Private/Projectile.cpp" />
         <option value="$PROJECT_DIR$/Source/BattleTank/Private/TankMovementComponent.cpp" />
         <option value="$PROJECT_DIR$/Source/BattleTank/Public/TankMovementComponent.h" />
         <option value="$PROJECT_DIR$/Source/BattleTank/Private/TankTrack.cpp" />
-        <option value="$PROJECT_DIR$/Source/BattleTank/Public/TankTrack.h" />
         <option value="$PROJECT_DIR$/Source/BattleTank/Private/TankPlayerController.cpp" />
         <option value="$PROJECT_DIR$/Source/BattleTank/Private/TankAIController.cpp" />
         <option value="$PROJECT_DIR$/Source/BattleTank/Public/TankAIController.h" />
         <option value="$PROJECT_DIR$/Source/BattleTank/Public/TankPlayerUI.h" />
-        <option value="$PROJECT_DIR$/Source/BattleTank/Public/TankAimingComponent.h" />
         <option value="$PROJECT_DIR$/Source/BattleTank/Private/TankAimingComponent.cpp" />
+        <option value="$PROJECT_DIR$/Source/BattleTank/Public/TankTrack.h" />
+        <option value="$PROJECT_DIR$/Source/BattleTank/Public/TankAimingComponent.h" />
+        <option value="$PROJECT_DIR$/Source/BattleTank/Public/Projectile.h" />
+        <option value="$PROJECT_DIR$/Source/BattleTank/Private/Projectile.cpp" />
       </list>
     </option>
   </component>
@@ -375,10 +381,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="After Lesson 285" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="-1384" y="165" key="#Inspection_severity" timestamp="1591907691788">
-      <screen x="-1920" y="0" width="1920" height="1040" />
-    </state>
-    <state x="-1384" y="165" key="#Inspection_severity/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1591907691788" />
     <state x="-1506" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598820746553">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
@@ -463,11 +465,19 @@
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="391" key="GridCell.Tab.3.right/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1598822996333" />
+    <state x="-702" y="101" key="RiderGenerateDialog" timestamp="1601063710141">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-702" y="101" key="RiderGenerateDialog/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1601063710141" />
     <state x="-1539" y="264" width="998" height="708" key="SettingsEditor" timestamp="1599250427819">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
     <state x="-1539" y="264" width="1366" height="710" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1599250427819" />
     <state x="365" y="95" width="998" height="708" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1596398603697" />
+    <state width="254" height="198" key="ShowFilterAction_Filter_Popup" timestamp="1600978633234">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state width="254" height="198" key="ShowFilterAction_Filter_Popup/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1600978633234" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1594156072312">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -476,6 +486,10 @@
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
     <state x="-1207" y="255" key="VcsDiffUtil.ChangesDialog/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1598465508809" />
+    <state x="-1343" y="189" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1601063642774">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1343" y="189" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1601063642774" />
     <state x="-1151" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1598888836822">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
@@ -489,14 +503,15 @@
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
     <state x="-1738" y="0" width="1593" height="1027" key="dock-window-1/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1598811778215" />
-    <state x="-1284" y="119" width="726" height="801" key="find.popup" timestamp="1598735752021">
+    <state x="-1284" y="119" width="726" height="801" key="find.popup" timestamp="1600979093582">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="-1284" y="119" width="726" height="801" key="find.popup/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1598735752021" />
+    <state x="-1284" y="119" width="726" height="801" key="find.popup/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1600979093582" />
     <state x="636" y="119" width="726" height="801" key="find.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1593120058727" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1592514050094">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1600978656525">
+      <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
+    <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1600978656525" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1592514050094" />
   </component>
   <component name="XDebuggerManager">
