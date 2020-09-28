@@ -52,22 +52,22 @@ void UTankTrack::DriveTrack() const
     UPrimitiveComponent* TankRoot = Cast<UPrimitiveComponent>(GetOwner()->GetRootComponent());
     if (!ensure(TankRoot))
     {
-        UE_LOG(LogTemp, Warning, TEXT("tank %s track %s cannot throttle a tank body!"), *GetOwner()->GetName(),
+        UE_LOG(LogTemp, Warning, TEXT("tank %s track %s cannot drive a tank body!"), *GetOwner()->GetName(),
                *GetName());
         return;
     }
 
     // limit speed
-    /*const FVector ForwardUnitVector = GetForwardVector();
+    const FVector ForwardUnitVector = GetForwardVector();
     const float ForwardSpeed = FVector::DotProduct(ForwardUnitVector, GetComponentVelocity());
 
     if (ForwardSpeed > 1500) // 1500 cm/s = 54 km/h
     {
-        UE_LOG(LogTemp, Warning, TEXT("tank %s track %s cannot throttle at speed %f!"), *GetOwner()->GetName(),
+        UE_LOG(LogTemp, Warning, TEXT("tank %s track %s cannot drive at speed %f!"), *GetOwner()->GetName(),
                *GetName(),
                ForwardSpeed);
         return;
-    }*/
+    }
 
     const FVector ForceApplied = GetForwardVector() * CurrentThrottle * TrackMaxDrivingForce;
     const FVector ForceLocation = GetComponentLocation();
