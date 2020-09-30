@@ -3,6 +3,7 @@
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "Particles/ParticleSystemComponent.h"
 #include "Components/StaticMeshComponent.h"
+#include "PhysicsEngine/RadialForceComponent.h"
 
 
 // Sets default values
@@ -23,10 +24,15 @@ AProjectile::AProjectile()
     ImpactBlast->SetupAttachment(CollisionMesh);
     ImpactBlast->bAutoActivate = false;
 
+    ExplosionForce = CreateDefaultSubobject<URadialForceComponent>(FName("Explosion Force"));
+    ExplosionForce->SetupAttachment(CollisionMesh);
+    
     //no need to protect pointer as added at construction
     ProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>(FName("ProjectileMovement"));
     ProjectileMovement->bAutoActivate = false;
+
 }
+
 void AProjectile::BeginPlay()
 {
     Super::BeginPlay();
@@ -34,10 +40,11 @@ void AProjectile::BeginPlay()
 }
 
 void AProjectile::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent,
-                       FVector NormalImpulse, const FHitResult& Hit)
+                        FVector NormalImpulse, const FHitResult& Hit)
 {
     LaunchBlast->Deactivate();
     ImpactBlast->Activate();
+    ExplosionForce->FireImpulse();
 }
 
 void AProjectile::LaunchProjectile(const float Speed) const

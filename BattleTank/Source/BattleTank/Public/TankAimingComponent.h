@@ -73,7 +73,7 @@ private:
     float LaunchSpeed = 8000; // = 8000 m/s
 
     UPROPERTY(EditDefaultsOnly, Category="Firing")
-    int32 RateOfFire = 20; // rounds per minute
+    int32 RateOfFire = 30; // rounds per minute
     double ReloadTimeInSeconds = 0; // 60/RateOfFire
     double LastFireTime = 0; // time seconds of last fire
 
