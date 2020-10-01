@@ -42989,7 +42989,6 @@
     <e p="G:\source\repos\BattleTank\BattleTank" t="IncludeFlat">
       <e p=".gitignore" t="Include" />
       <e p="BattleTank.sln" t="IncludeFlat" />
-      <e p="BattleTank.sln.DotSettings.user" t="Include" />
       <e p="BattleTank.uproject" t="Include" />
       <e p="Config" t="Include">
         <e p="DefaultEditor.ini" t="Include" />

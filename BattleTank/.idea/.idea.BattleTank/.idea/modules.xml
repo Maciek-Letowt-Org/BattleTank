@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/.idea.BattleTank/.idea/.idea.BattleTank.iml" filepath="$PROJECT_DIR$/.idea/.idea.BattleTank/.idea/.idea.BattleTank.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/.idea.BattleTank/riderModule.iml" filepath="$PROJECT_DIR$/.idea/.idea.BattleTank/riderModule.iml" />
     </modules>
   </component>

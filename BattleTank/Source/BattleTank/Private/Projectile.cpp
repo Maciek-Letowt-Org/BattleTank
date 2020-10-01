@@ -4,6 +4,7 @@
 #include "Particles/ParticleSystemComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "PhysicsEngine/RadialForceComponent.h"
+#include "TimerManager.h"
 
 
 // Sets default values
@@ -26,11 +27,10 @@ AProjectile::AProjectile()
 
     ExplosionForce = CreateDefaultSubobject<URadialForceComponent>(FName("Explosion Force"));
     ExplosionForce->SetupAttachment(CollisionMesh);
-    
+
     //no need to protect pointer as added at construction
     ProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>(FName("ProjectileMovement"));
     ProjectileMovement->bAutoActivate = false;
-
 }
 
 void AProjectile::BeginPlay()
@@ -45,6 +45,16 @@ void AProjectile::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, U
     LaunchBlast->Deactivate();
     ImpactBlast->Activate();
     ExplosionForce->FireImpulse();
+    SetRootComponent(ImpactBlast);
+    CollisionMesh->DestroyComponent();
+
+    FTimerHandle Timer;
+    GetWorld()->GetTimerManager().SetTimer(Timer, this, &AProjectile::OnTimerExpire, DestroyDelay, false);
+}
+
+void AProjectile::OnTimerExpire()
+{
+    Destroy();
 }
 
 void AProjectile::LaunchProjectile(const float Speed) const

@@ -313,7 +313,7 @@
     <content url="file://C:/Program Files/Epic Games/UE_4.25/Engine/Shaders/StandaloneRenderer/D3D" />
     <content url="file://C:/Program Files/Epic Games/UE_4.25/Engine/Shaders/StandaloneRenderer/OpenGL" />
     <content url="file://C:/Program Files/Epic Games/UE_4.25/Engine/Source" />
-    <content url="file://$MODULE_DIR$/../../.." />
+    <content url="file://$MODULE_DIR$/../.." />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>
