@@ -23,22 +23,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3a90fabb-7d7f-4a5f-8391-5a72420e7c56" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.BattleTank/.idea/.idea.BattleTank.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.BattleTank/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BattleTank/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.BattleTank/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BattleTank/.idea/indexLayout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.BattleTank/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BattleTank/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BattleTank/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BattleTank/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.BattleTank/riderModule.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BattleTank/riderModule.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Maps/BattleGround.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/BattleGround.umap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Vehicles/BP_Tank1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Vehicles/BP_Tank1.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Weapon/BP-Projectile1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Weapon/BP-Projectile1.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Weapon/P_Impact_Blast1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Weapon/P_Impact_Blast1.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Saved/AutoScreenshot.png" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/AutoScreenshot.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Saved/Config/Windows/Editor.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/Config/Windows/Editor.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Saved/Autosaves/PackageRestoreData.json" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/Autosaves/PackageRestoreData.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Saved/Config/Windows/EditorPerProjectUserSettings.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/Config/Windows/EditorPerProjectUserSettings.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Saved/Config/Windows/GameUserSettings.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/Config/Windows/GameUserSettings.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Saved/Config/Windows/Engine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/Config/Windows/Engine.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/BattleTank/Private/Projectile.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BattleTank/Private/Projectile.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/BattleTank/Private/Tank.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BattleTank/Private/Tank.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/BattleTank/Private/TankTrack.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BattleTank/Private/TankTrack.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/BattleTank/Public/Projectile.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BattleTank/Public/Projectile.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/BattleTank/Public/Tank.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BattleTank/Public/Tank.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +50,9 @@
       <list>
         <option value="$PROJECT_DIR$/Source/BattleTank/Public/Projectile.h" />
         <option value="$PROJECT_DIR$/Source/BattleTank/Private/Projectile.cpp" />
+        <option value="$PROJECT_DIR$/Source/BattleTank/Private/TankTrack.cpp" />
+        <option value="$PROJECT_DIR$/Source/BattleTank/Public/Tank.h" />
+        <option value="$PROJECT_DIR$/Source/BattleTank/Private/Tank.cpp" />
       </list>
     </option>
   </component>
@@ -174,7 +174,7 @@
     </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -186,8 +186,19 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="-1282" y="253" width="644" height="534" key="find.popup" timestamp="1601843743817">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1282" y="253" width="644" height="534" key="find.popup/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1601843743817" />
+    <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1601840299392">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1601840299392" />
   </component>
 </project>

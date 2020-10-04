@@ -63,7 +63,7 @@ void UTankTrack::DriveTrack() const
 
     if (ForwardSpeed > 1500) // 1500 cm/s = 54 km/h
     {
-        UE_LOG(LogTemp, Warning, TEXT("tank %s track %s cannot drive at speed %f!"), *GetOwner()->GetName(),
+        UE_LOG(LogTemp, Warning, TEXT("tank %s track %s cannot drive faster than %f cm/s!"), *GetOwner()->GetName(),
                *GetName(),
                ForwardSpeed);
         return;

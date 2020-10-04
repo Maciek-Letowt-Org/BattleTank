@@ -29,6 +29,9 @@ private:
     UPROPERTY(EditDefaultsOnly, Category = "Setup")
     float DestroyDelay = 10.f; // 1 second
 
+    UPROPERTY(EditDefaultsOnly, Category = "Setup")
+    float ProjectileDamage = 20.f; // health removed by 1 projectile hit
+
     UPROPERTY(VisibleAnywhere, Category = "Components")
     class UStaticMeshComponent* CollisionMesh = nullptr;
 
