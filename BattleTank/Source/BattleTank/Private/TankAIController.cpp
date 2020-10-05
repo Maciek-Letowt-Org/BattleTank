@@ -1,8 +1,24 @@
 // copyright Maciek Letowt 2020
 
 #include "TankAIController.h"
+#include "Tank.h"
 #include "Engine/World.h"
 #include "TankAimingComponent.h"
+
+void ATankAIController::SetPawn(APawn* InPawn)
+{
+    Super::SetPawn(InPawn);
+
+    if (InPawn)
+    {
+        ATank* PossessedTank = Cast<ATank>(InPawn);
+        if (!ensure(PossessedTank))
+        {
+            return;
+        }
+        //TODO subscribe to death event
+    }
+}
 
 void ATankAIController::Tick(const float DeltaSeconds)
 {
