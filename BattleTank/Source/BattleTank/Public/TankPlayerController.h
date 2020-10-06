@@ -26,7 +26,10 @@ private:
     bool GetLookDirection(FVector2D ScreenLocation, FVector& OutLookDirection) const;
     bool GetSightRayHitLocation(FVector& OutHitLocation) const;
     bool GetLookVectorHitLocation(FVector& LookFrom, FVector& OutHitLocation) const;
-    
+
+    UFUNCTION()
+    void OnPossessedTankDeath();
+
     // ---------------- members / properties -------------------------------------------
     UTankAimingComponent* AimingComponent = nullptr;
 
@@ -36,4 +39,6 @@ private:
     float CrossHairYLocation = 0.33333;
     UPROPERTY(EditAnywhere)
     float LineTraceRange = 1000000;
+    
+    virtual void SetPawn(APawn* InPawn) override;
 };

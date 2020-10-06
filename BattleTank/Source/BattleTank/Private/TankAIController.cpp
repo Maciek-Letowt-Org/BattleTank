@@ -12,11 +12,13 @@ void ATankAIController::SetPawn(APawn* InPawn)
     if (InPawn)
     {
         ATank* PossessedTank = Cast<ATank>(InPawn);
+
         if (!ensure(PossessedTank))
         {
             return;
         }
-        //TODO subscribe to death event
+        // subscribe to death event
+        PossessedTank->OnDeath.AddUniqueDynamic(this, &ATankAIController::OnPossessedTankDeath);
     }
 }
 
@@ -51,4 +53,9 @@ void ATankAIController::Tick(const float DeltaSeconds)
     {
         AimingComponent->Fire();
     }
+}
+
+void ATankAIController::OnPossessedTankDeath()
+{
+    GetPawn()->DetachFromControllerPendingDestroy();
 }
