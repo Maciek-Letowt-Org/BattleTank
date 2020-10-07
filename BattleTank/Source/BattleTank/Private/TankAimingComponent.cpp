@@ -97,6 +97,13 @@ void UTankAimingComponent::AimAt(const FVector HitLocation)
     const FVector AimDirection = OutLaunchVelocity.GetSafeNormal();
     const FRotator AimRtt = AimDirection.Rotation().Clamp();
 
+    //TODO Roll: 0 Pitch & Yaw unchanged; +90 p=y but y=-p; +-180 * -1; -90 y=p but p=-y
+    const float RollRadians = Turret->GetComponentTransform().GetRotation().Y;
+    const float RollDegrees = FMath::RadiansToDegrees(RollRadians);
+    const float Roll = FMath::UnwindDegrees(RollDegrees);
+    //const float RelativePitch = 
+    
+    UE_LOG(LogTemp, Warning, TEXT("tank %s aiming component roll %f"), *GetOwner()->GetName(),Roll);
     MoveBarrelTowards(AimRtt.Pitch);
     MoveTurretTowards(AimRtt.Yaw);
 }
@@ -111,12 +118,12 @@ void UTankAimingComponent::MoveBarrelTowards(const float AimPitch)
 
     // work out rotation difference between current barrel rotation & aim direction rotation
     const float BarrelPitch = Barrel->GetForwardVector().Rotation().Clamp().Pitch;
-    float DeltaPitch = AimPitch - BarrelPitch;
+    const float DeltaPitch = AimPitch - BarrelPitch;
 
     if (abs(DeltaPitch) > AimTolerance)
     {
         bBarrelMoving = true;
-        Barrel->Elevate(DeltaDegrees(DeltaPitch));
+        Barrel->Elevate(FMath::UnwindDegrees(DeltaPitch));
     }
     else
     {
@@ -134,30 +141,17 @@ void UTankAimingComponent::MoveTurretTowards(const float AimYaw)
 
     // work out rotation difference between current turret rotation & aim direction rotation
     const float TurretYaw = Turret->GetForwardVector().Rotation().Clamp().Yaw;
-    float DeltaYaw = AimYaw - TurretYaw;
+    const float DeltaYaw = AimYaw - TurretYaw;
 
     if (abs(DeltaYaw) > AimTolerance)
     {
         bTurretMoving = true;
-        Turret->Rotate(DeltaDegrees(DeltaYaw));
+        Turret->Rotate(FMath::UnwindDegrees(DeltaYaw));
     }
     else
     {
         bTurretMoving = false;
     }
-}
-
-float UTankAimingComponent::DeltaDegrees(float& Delta)
-{
-    if (Delta > 180)
-    {
-        Delta = Delta - 360;
-    }
-    else if (Delta < -180)
-    {
-        Delta = Delta + 360;
-    }
-    return Delta;
 }
 
 void UTankAimingComponent::TickComponent(const float DeltaTime, const ELevelTick TickType,

@@ -45,7 +45,6 @@ private:
     // Sets default values for this component's properties
     UTankAimingComponent();
     void MoveBarrelTowards(float AimPitch);
-    static float DeltaDegrees(float& Delta);
     void MoveTurretTowards(float AimYaw);
     virtual void TickComponent(float DeltaTime, enum ELevelTick TickType,
                                FActorComponentTickFunction* ThisTickFunction) override;
