@@ -28,9 +28,9 @@ void ATankAIController::Tick(const float DeltaSeconds)
 
     APawn* PlayerTank = GetWorld()->GetFirstPlayerController()->GetPawn();
 
-    if (!ensure(PlayerTank))
+    // player tank may have died
+    if (!PlayerTank)
     {
-        UE_LOG(LogTemp, Warning, TEXT("AI Controller %s cannot find PLAYER tank!"), *GetPawn()->GetName());
         return;
     }
 
@@ -57,5 +57,10 @@ void ATankAIController::Tick(const float DeltaSeconds)
 
 void ATankAIController::OnPossessedTankDeath()
 {
-    GetPawn()->DetachFromControllerPendingDestroy();
+    APawn* PossessedTank = GetPawn();
+    
+    if (PossessedTank)
+    {
+        PossessedTank->DetachFromControllerPendingDestroy();
+    }    
 }

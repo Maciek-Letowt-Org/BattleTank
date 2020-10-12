@@ -25,7 +25,9 @@ private:
     void AimTowardsCrosshair() const;
     bool GetLookDirection(FVector2D ScreenLocation, FVector& OutLookDirection) const;
     bool GetSightRayHitLocation(FVector& OutHitLocation) const;
-    bool GetLookVectorHitLocation(FVector& LookFrom, FVector& OutHitLocation) const;
+
+    // return result from ray cast in "look direction" from camera to World
+    bool GetLookVectorHitLocation(FVector& LookDirection, FVector& OutHitLocation) const;
 
     UFUNCTION()
     void OnPossessedTankDeath();

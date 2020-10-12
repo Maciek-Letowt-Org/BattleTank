@@ -89,21 +89,28 @@ void UTankAimingComponent::AimAt(const FVector HitLocation)
         ESuggestProjVelocityTraceOption::DoNotTrace // parameter must be present to work around bug in UE4.25
     );
 
-    if (!bHaveAimSolution)
+    if (bHaveAimSolution)
     {
-        return;
+        AimTowardsSolution(OutLaunchVelocity);
     }
+}
 
-    const FVector AimDirection = OutLaunchVelocity.GetSafeNormal();
+void UTankAimingComponent::AimTowardsSolution(const FVector LaunchVelocity)
+{
+    const FVector AimDirection = LaunchVelocity.GetSafeNormal();
     const FRotator AimRtt = AimDirection.Rotation().Clamp();
 
-    //TODO Roll: 0 Pitch & Yaw unchanged; +90 p=y but y=-p; +-180 * -1; -90 y=p but p=-y
+    /*
+    // Compensate for tank not on level ground e.g. sideways on a hill
     const float RollRadians = Turret->GetComponentTransform().GetRotation().Y;
-    const float RollDegrees = FMath::RadiansToDegrees(RollRadians);
-    const float Roll = FMath::UnwindDegrees(RollDegrees);
-    //const float RelativePitch = 
-    
-    UE_LOG(LogTemp, Warning, TEXT("tank %s aiming component roll %f"), *GetOwner()->GetName(),Roll);
+    const float LevelCoefficient = cos(RollRadians);
+    const float CompensatedCoefficient = sin(RollRadians);
+
+    const float CompensatedPitch = AimRtt.Pitch * LevelCoefficient + AimRtt.Yaw * CompensatedCoefficient;
+    const float CompensatedYaw = AimRtt.Yaw * LevelCoefficient - AimRtt.Pitch * CompensatedCoefficient;
+
+    UE_LOG(LogTemp, Warning, TEXT("tank %s aiming component roll %f"), *GetOwner()->GetName(), RollRadians);
+    */
     MoveBarrelTowards(AimRtt.Pitch);
     MoveTurretTowards(AimRtt.Yaw);
 }

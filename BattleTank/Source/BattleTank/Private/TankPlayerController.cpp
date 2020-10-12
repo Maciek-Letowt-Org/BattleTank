@@ -45,7 +45,7 @@ void ATankPlayerController::Tick(const float DeltaSeconds)
 
 void ATankPlayerController::AimTowardsCrosshair() const
 {
-    if (!GetPawn()) // if player has depossessed tank (but why is this req when we have if aiming component below?)
+    if (!GetPawn()) // if player has depossessed tank (aiming component may not be null)
     {
         return;
     }
@@ -80,7 +80,6 @@ bool ATankPlayerController::GetSightRayHitLocation(FVector& OutHitLocation) cons
     FVector OutLookDirection;
     if (GetLookDirection(ScreenLocation, OutLookDirection))
     {
-        // return result from ray cast in "look direction" from camera to World
         return GetLookVectorHitLocation(OutLookDirection, OutHitLocation);
     }
 
@@ -102,18 +101,18 @@ bool ATankPlayerController::GetLookDirection(const FVector2D ScreenLocation, FVe
     return bFoundDirection;
 }
 
-bool ATankPlayerController::GetLookVectorHitLocation(FVector& LookFrom, FVector& OutHitLocation) const
+bool ATankPlayerController::GetLookVectorHitLocation(FVector& LookDirection, FVector& OutHitLocation) const
 {
     FHitResult OutHitResult;
     const FVector StartLocation = PlayerCameraManager->GetCameraLocation();
-    const FVector EndLocation = StartLocation + (LookFrom * LineTraceRange);
+    const FVector EndLocation = StartLocation + (LookDirection * LineTraceRange);
 
     // see what is hit up to max. range
     const bool bHit = GetWorld()->LineTraceSingleByChannel(
         OutHitResult,
         StartLocation,
         EndLocation,
-        ECC_Visibility
+        ECollisionChannel::ECC_Camera
     );
 
     if (bHit)
