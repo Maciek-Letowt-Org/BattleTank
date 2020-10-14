@@ -77,7 +77,7 @@ void UTankAimingComponent::AimAt(const FVector HitLocation)
     const FVector StartLocation = Barrel->GetSocketLocation(FName("Projectile"));
     FVector OutLaunchVelocity;
 
-    const bool bHaveAimSolution = UGameplayStatics::SuggestProjectileVelocity(
+    const bool bHasAimSolution = UGameplayStatics::SuggestProjectileVelocity(
         this,
         OutLaunchVelocity,
         StartLocation,
@@ -89,7 +89,7 @@ void UTankAimingComponent::AimAt(const FVector HitLocation)
         ESuggestProjVelocityTraceOption::DoNotTrace // parameter must be present to work around bug in UE4.25
     );
 
-    if (bHaveAimSolution)
+    if (bHasAimSolution)
     {
         AimTowardsSolution(OutLaunchVelocity);
     }
@@ -129,12 +129,12 @@ void UTankAimingComponent::MoveBarrelTowards(const float AimPitch)
 
     if (abs(DeltaPitch) > AimTolerance)
     {
-        bBarrelMoving = true;
+        bIsBarrelMoving = true;
         Barrel->Elevate(FMath::UnwindDegrees(DeltaPitch));
     }
     else
     {
-        bBarrelMoving = false;
+        bIsBarrelMoving = false;
     }
 }
 
@@ -152,12 +152,12 @@ void UTankAimingComponent::MoveTurretTowards(const float AimYaw)
 
     if (abs(DeltaYaw) > AimTolerance)
     {
-        bTurretMoving = true;
+        bIsTurretMoving = true;
         Turret->Rotate(FMath::UnwindDegrees(DeltaYaw));
     }
     else
     {
-        bTurretMoving = false;
+        bIsTurretMoving = false;
     }
 }
 
@@ -174,7 +174,7 @@ void UTankAimingComponent::TickComponent(const float DeltaTime, const ELevelTick
     {
         FiringState = EFiringState::Reloading;
     }
-    else if (bBarrelMoving || bTurretMoving)
+    else if (bIsBarrelMoving || bIsTurretMoving)
     {
         FiringState = EFiringState::Aiming;
     }

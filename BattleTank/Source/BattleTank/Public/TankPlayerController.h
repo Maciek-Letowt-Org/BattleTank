@@ -23,11 +23,11 @@ private:
 
     // move barrel towards position where a shot would hit where crosshair intersects world
     void AimTowardsCrosshair() const;
-    bool GetLookDirection(FVector2D ScreenLocation, FVector& OutLookDirection) const;
-    bool GetSightRayHitLocation(FVector& OutHitLocation) const;
+    bool GotLookDirection(FVector2D ScreenLocation, FVector& OutLookDirection) const;
+    bool GotSightRayHitLocation(FVector& OutHitLocation) const;
 
     // return result from ray cast in "look direction" from camera to World
-    bool GetLookVectorHitLocation(FVector& LookDirection, FVector& OutHitLocation) const;
+    bool GotLookVectorHitLocation(FVector& LookDirection, FVector& OutHitLocation) const;
 
     UFUNCTION()
     void OnPossessedTankDeath();

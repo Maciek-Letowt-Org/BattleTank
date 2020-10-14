@@ -53,7 +53,7 @@ void ATankPlayerController::AimTowardsCrosshair() const
     if (AimingComponent)
     {
         FVector OutHitLocation;
-        const bool bGotHitLocation = GetSightRayHitLocation(OutHitLocation);
+        const bool bGotHitLocation = GotSightRayHitLocation(OutHitLocation);
          
         if (bGotHitLocation)
         {
@@ -63,7 +63,7 @@ void ATankPlayerController::AimTowardsCrosshair() const
     }
 }
 
-bool ATankPlayerController::GetSightRayHitLocation(FVector& OutHitLocation) const
+bool ATankPlayerController::GotSightRayHitLocation(FVector& OutHitLocation) const
 {
     // find crosshair position in pixel coordinates
     int32 OutViewPortSizeX, OutViewPortSizeY;
@@ -78,19 +78,19 @@ bool ATankPlayerController::GetSightRayHitLocation(FVector& OutHitLocation) cons
     const FVector2D ScreenLocation = FVector2D(CrossHairXLocation * OutViewPortSizeX,
                                                CrossHairYLocation * OutViewPortSizeY);
     FVector OutLookDirection;
-    if (GetLookDirection(ScreenLocation, OutLookDirection))
+    if (GotLookDirection(ScreenLocation, OutLookDirection))
     {
-        return GetLookVectorHitLocation(OutLookDirection, OutHitLocation);
+        return GotLookVectorHitLocation(OutLookDirection, OutHitLocation);
     }
 
     return false;
 }
 
-bool ATankPlayerController::GetLookDirection(const FVector2D ScreenLocation, FVector& OutLookDirection) const
+bool ATankPlayerController::GotLookDirection(const FVector2D ScreenLocation, FVector& OutLookDirection) const
 {
     FVector OutCameraLocation;
 
-    const bool bFoundDirection = DeprojectScreenPositionToWorld
+    const bool bHasDirection = DeprojectScreenPositionToWorld
     (
         ScreenLocation.X,
         ScreenLocation.Y,
@@ -98,30 +98,30 @@ bool ATankPlayerController::GetLookDirection(const FVector2D ScreenLocation, FVe
         OutLookDirection
     );
 
-    return bFoundDirection;
+    return bHasDirection;
 }
 
-bool ATankPlayerController::GetLookVectorHitLocation(FVector& LookDirection, FVector& OutHitLocation) const
+bool ATankPlayerController::GotLookVectorHitLocation(FVector& LookDirection, FVector& OutHitLocation) const
 {
     FHitResult OutHitResult;
     const FVector StartLocation = PlayerCameraManager->GetCameraLocation();
     const FVector EndLocation = StartLocation + (LookDirection * LineTraceRange);
 
     // see what is hit up to max. range
-    const bool bHit = GetWorld()->LineTraceSingleByChannel(
+    const bool bHasHitLocation = GetWorld()->LineTraceSingleByChannel(
         OutHitResult,
         StartLocation,
         EndLocation,
         ECollisionChannel::ECC_Camera
     );
 
-    if (bHit)
+    if (bHasHitLocation)
     {
         // set HitLocation
         OutHitLocation = OutHitResult.Location;
     }
 
-    return bHit;
+    return bHasHitLocation;
 }
 
 void ATankPlayerController::OnPossessedTankDeath()

@@ -23,24 +23,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3a90fabb-7d7f-4a5f-8391-5a72420e7c56" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Content/Weapon/SM_Mortar_3barrel.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Weapon/SM_Mortar_base.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Weapon/SM_Mortar_turret.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BattleTank/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BattleTank/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DefaultInput.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultInput.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Maps/BattleGround.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/BattleGround.umap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Vehicles/BP_Tank1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Vehicles/BP_Tank1.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Weapon/BP_Mortar.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Weapon/BP_Mortar.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Saved/AutoScreenshot.png" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/AutoScreenshot.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Saved/Autosaves/PackageRestoreData.json" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/Autosaves/PackageRestoreData.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Saved/Config/Windows/Editor.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/Config/Windows/Editor.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Saved/Config/Windows/EditorPerProjectUserSettings.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/Config/Windows/EditorPerProjectUserSettings.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Saved/Config/Windows/Engine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Saved/Config/Windows/Engine.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/BattleTank/Private/Tank.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BattleTank/Private/Tank.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/BattleTank/Private/TankAIController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BattleTank/Private/TankAIController.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/BattleTank/Private/TankAimingComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BattleTank/Private/TankAimingComponent.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/BattleTank/Private/TankPlayerController.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BattleTank/Private/TankPlayerController.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/BattleTank/Public/Tank.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BattleTank/Public/Tank.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/BattleTank/Private/TankPlayerController.cpp.rej" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BattleTank/Private/TankPlayerController.cpp.rej" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/BattleTank/Public/TankAimingComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BattleTank/Public/TankAimingComponent.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/BattleTank/Public/TankPlayerController.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/BattleTank/Public/TankPlayerController.h" afterDir="false" />
     </list>
@@ -58,14 +48,15 @@
         <option value="$PROJECT_DIR$/Source/BattleTank/Public/Projectile.h" />
         <option value="$PROJECT_DIR$/Source/BattleTank/Private/Projectile.cpp" />
         <option value="$PROJECT_DIR$/Source/BattleTank/Private/TankTrack.cpp" />
-        <option value="$PROJECT_DIR$/Source/BattleTank/Public/TankAimingComponent.h" />
-        <option value="$PROJECT_DIR$/Source/BattleTank/Private/TankAimingComponent.cpp" />
         <option value="$PROJECT_DIR$/Source/BattleTank/Public/TankPlayerController.h" />
         <option value="$PROJECT_DIR$/Source/BattleTank/Public/TankAIController.h" />
         <option value="$PROJECT_DIR$/Source/BattleTank/Public/Tank.h" />
         <option value="$PROJECT_DIR$/Source/BattleTank/Private/Tank.cpp" />
-        <option value="$PROJECT_DIR$/Source/BattleTank/Private/TankPlayerController.cpp" />
         <option value="$PROJECT_DIR$/Source/BattleTank/Private/TankAIController.cpp" />
+        <option value="$PROJECT_DIR$/Source/BattleTank/Private/TankPlayerController.cpp" />
+        <option value="$PROJECT_DIR$/Source/BattleTank/Private/TankAimingComponent.cpp" />
+        <option value="$PROJECT_DIR$/Source/BattleTank/Private/TankPlayerController.cpp.rej" />
+        <option value="$PROJECT_DIR$/Source/BattleTank/Public/TankAimingComponent.h" />
       </list>
     </option>
   </component>
@@ -80,6 +71,7 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C#" />
   </component>
   <component name="RunManager">
     <configuration name="BattleTank" type="CppProject" factoryName="C++ Project">
@@ -209,10 +201,14 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="638" y="253" width="644" height="534" key="find.popup" timestamp="1602104399050">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="-1459" y="165" key="SettingsEditor" timestamp="1602575376392">
+      <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="-1282" y="253" width="644" height="534" key="find.popup/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1601843743817" />
+    <state x="-1459" y="165" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1602575376392" />
+    <state x="-1187" y="437" width="644" height="534" key="find.popup" timestamp="1602712901798">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1187" y="437" width="644" height="534" key="find.popup/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1602712901798" />
     <state x="638" y="253" width="644" height="534" key="find.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1602104399050" />
     <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1601840299392">
       <screen x="-1920" y="0" width="1920" height="1040" />

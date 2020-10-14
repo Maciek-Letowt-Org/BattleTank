@@ -60,8 +60,8 @@ private:
     // ------ members / properties -------------------------------
     UTankBarrel* Barrel = nullptr;
     UTankTurret* Turret = nullptr;
-    bool bBarrelMoving = false;
-    bool bTurretMoving = false;
+    bool bIsBarrelMoving = false;
+    bool bIsTurretMoving = false;
 
     UPROPERTY(EditDefaultsOnly, Category="Firing")
     int32 RoundsLeft = 99; // rounds on board
