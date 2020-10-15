@@ -43692,6 +43692,7 @@
           <e p="BattleTankGameModeBase.h" t="Include" />
           <e p="Private" t="Include">
             <e p="Projectile.cpp" t="Include" />
+            <e p="SprungWheel.cpp" t="Include" />
             <e p="Tank.cpp" t="Include" />
             <e p="TankAIController.cpp" t="Include" />
             <e p="TankAimingComponent.cpp" t="Include" />
@@ -43705,6 +43706,7 @@
           </e>
           <e p="Public" t="Include">
             <e p="Projectile.h" t="Include" />
+            <e p="SprungWheel.h" t="Include" />
             <e p="Tank.h" t="Include" />
             <e p="TankAIController.h" t="Include" />
             <e p="TankAimingComponent.h" t="Include" />
