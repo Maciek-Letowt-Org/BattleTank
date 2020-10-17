@@ -12,18 +12,15 @@ class BATTLETANK_API ASprungWheel : public AActor
     GENERATED_BODY()
 
 public:
-    void BuildSpringBetweenBodyAndWheel();
     // Sets default values for this actor's properties
     ASprungWheel();
-
+    // Called every frame
+    virtual void Tick(float DeltaTime) override;
 protected:
     // Called when the game starts or when spawned
     virtual void BeginPlay() override;
-
-public:
-    // Called every frame
-    virtual void Tick(float DeltaTime) override;
 private:
+
     // ------ members / properties -------------------------------
     UPROPERTY(EditDefaultsOnly, Category = "Setup")
     float PositionStrength = 1000.f;
@@ -31,15 +28,15 @@ private:
     float VelocityStrength = 100.f;
 
     UPROPERTY(EditDefaultsOnly, Category = "Setup")
-    float BodyMassInKg = 1000.f;
+    float MassMassInKg = 1000.f;
 
     UPROPERTY(EditDefaultsOnly, Category = "Setup")
     float WheelMassInKg = 50.f;
 
     UPROPERTY(VisibleAnywhere, Category = "Components")
-    class UStaticMeshComponent* Body = nullptr;
+    UStaticMeshComponent* Mass = nullptr;
     UPROPERTY(VisibleAnywhere, Category = "Components")
-    class UStaticMeshComponent* Wheel = nullptr;
+    UStaticMeshComponent* Wheel = nullptr;
     UPROPERTY(VisibleAnywhere, Category = "Components")
-    class UPhysicsConstraintComponent* Spring = nullptr;
+    class UPhysicsConstraintComponent* MassWheelConstraint = nullptr;
 };

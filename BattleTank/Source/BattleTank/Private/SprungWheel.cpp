@@ -2,44 +2,24 @@
 
 
 #include "SprungWheel.h"
-
 #include "PhysicsEngine/PhysicsConstraintComponent.h"
 
 
-// Sets default values
+// set up mass with wheel & constraint
 ASprungWheel::ASprungWheel()
 {
     // Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-    PrimaryActorTick.bCanEverTick = false;
-    Body = CreateDefaultSubobject<UStaticMeshComponent>(FName("Body"));
-    SetRootComponent(Body);
-    Body->SetNotifyRigidBodyCollision(true);
-    Body->SetVisibility(false);
-    
+    PrimaryActorTick.bCanEverTick = true;
+    Mass = CreateDefaultSubobject<UStaticMeshComponent>(FName("Mass"));
+    SetRootComponent(Mass);
+
     Wheel = CreateDefaultSubobject<UStaticMeshComponent>(FName("Wheel"));
-    Wheel->SetupAttachment(Body);
+    Wheel->SetupAttachment(Mass);
 
-    BuildSpringBetweenBodyAndWheel();
+    MassWheelConstraint = CreateDefaultSubobject<UPhysicsConstraintComponent>(FName("MassWheelConstraint"));
+    MassWheelConstraint->SetupAttachment(Mass);
 }
 
-void ASprungWheel::BuildSpringBetweenBodyAndWheel()
-{
-    Spring = CreateDefaultSubobject<UPhysicsConstraintComponent>(FName("Spring"));
-    Spring->SetupAttachment(Body);
-    Spring->SetConstrainedComponents(Body, FName("Body"), Wheel, FName("Wheel"));
-
-    Spring->SetLinearDriveParams(PositionStrength, VelocityStrength, 0.f);
-    
-    // only moves up & down
-    Spring->SetLinearPositionDrive(false, false, true);
-    Spring->SetLinearVelocityDrive(false, false, true);
-    Spring->SetLinearZLimit(ELinearConstraintMotion::LCM_Free, 100.f);
-
-    // no sing or twist
-    Spring->SetAngularSwing1Limit(EAngularConstraintMotion::ACM_Locked, 0.f);
-    Spring->SetAngularSwing2Limit(EAngularConstraintMotion::ACM_Locked, 0.f);
-    Spring->SetAngularTwistLimit(EAngularConstraintMotion::ACM_Locked, 0.f);
-}
 
 // Called when the game starts or when spawned
 void ASprungWheel::BeginPlay()
