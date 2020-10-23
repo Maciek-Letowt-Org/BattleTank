@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="92798052-035a-4c60-a7f7-39550fbf8d3b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.BattleTank.dir/.idea/contentModel.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.BattleTank.dir/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.BattleTank.dir/.idea/indexLayout.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.BattleTank.dir/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.BattleTank.dir/.idea/projectSettingsUpdater.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.BattleTank.dir/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.BattleTank.dir/riderModule.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BattleTank/.idea/.idea.BattleTank/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/BattleTank/.idea/.idea.BattleTank/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BattleTank/.idea/.idea.BattleTank/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/BattleTank/.idea/.idea.BattleTank/.idea/indexLayout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BattleTank/.idea/.idea.BattleTank/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/BattleTank/.idea/.idea.BattleTank/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BattleTank/.idea/.idea.BattleTank/riderModule.iml" beforeDir="false" afterPath="$PROJECT_DIR$/BattleTank/.idea/.idea.BattleTank/riderModule.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BattleTank/Content/Maps/BattleGround.umap" beforeDir="false" afterPath="$PROJECT_DIR$/BattleTank/Content/Maps/BattleGround.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BattleTank/Content/Vehicles/BP_Tank1.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/BattleTank/Content/Vehicles/BP_Tank1.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BattleTank/Saved/AutoScreenshot.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BattleTank/Saved/Autosaves/PackageRestoreData.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BattleTank/Saved/Config/Windows/Editor.ini" beforeDir="false" afterPath="$PROJECT_DIR$/BattleTank/Saved/Config/Windows/Editor.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BattleTank/Saved/Config/Windows/EditorPerProjectUserSettings.ini" beforeDir="false" afterPath="$PROJECT_DIR$/BattleTank/Saved/Config/Windows/EditorPerProjectUserSettings.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BattleTank/Saved/Config/Windows/Engine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/BattleTank/Saved/Config/Windows/Engine.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BattleTank/Saved/Config/Windows/GameUserSettings.ini" beforeDir="false" afterPath="$PROJECT_DIR$/BattleTank/Saved/Config/Windows/GameUserSettings.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BattleTank/Source/BattleTank/Private/SpawnPoint.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/BattleTank/Source/BattleTank/Private/SpawnPoint.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BattleTank/Source/BattleTank/Private/SprungWheel.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/BattleTank/Source/BattleTank/Private/SprungWheel.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BattleTank/Source/BattleTank/Public/SpawnPoint.h" beforeDir="false" afterPath="$PROJECT_DIR$/BattleTank/Source/BattleTank/Public/SpawnPoint.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BattleTank/Source/BattleTank/Public/SprungWheel.h" beforeDir="false" afterPath="$PROJECT_DIR$/BattleTank/Source/BattleTank/Public/SprungWheel.h" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/BattleTank/Source/BattleTank.Target.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/BattleTank/Source/BattleTankEditor.Target.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/BattleTank/Source/BattleTank/BattleTank.Build.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="ProjectId" id="1j4EJkkXhWgbb7K22WjZJQhmbrb" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="-1212" y="345" key="#Notifications" timestamp="1603055572604">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1212" y="345" key="#Notifications/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1603055572604" />
+  </component>
+</project>

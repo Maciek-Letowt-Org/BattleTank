@@ -52,7 +52,7 @@ private:
     virtual void BeginPlay() override;
 
     UFUNCTION(BlueprintCallable, Category="Setup") // created this method for the construction script in the blueprint
-    void SetProjectileBluePrint(const TSubclassOf<AProjectile>ProjectileBP)
+    void SetProjectileBluePrint(const TSubclassOf<AProjectile> ProjectileBP)
     {
         ProjectileBluePrint = ProjectileBP;
     }

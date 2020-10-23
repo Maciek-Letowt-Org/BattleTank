@@ -26,6 +26,13 @@ public:
                                FActorComponentTickFunction* ThisTickFunction) override;
 
 private:
+    UFUNCTION(BlueprintCallable, Category="Setup") // created this method for the construction script in the blueprint
+    void SetSpawnClassBluePrint(const TSubclassOf<AActor> SpawnClassBP)
+    {
+        SpawnClass = SpawnClassBP;
+    }
+
+    // ------ members / properties -------------------------------
     UPROPERTY(EditDefaultsOnly, Category="Setup")
     TSubclassOf<AActor> SpawnClass;
 };
