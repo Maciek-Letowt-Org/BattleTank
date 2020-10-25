@@ -1,6 +1,4 @@
 // copyright Maciek Letowt 2020
-
-
 #include "SpawnPoint.h"
 #include "Kismet/GameplayStatics.h"
 
@@ -33,7 +31,7 @@ void USpawnPoint::BeginPlay()
 
 
 // Called every frame
-void USpawnPoint::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
+void USpawnPoint::TickComponent(const float DeltaTime, const ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
     Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
