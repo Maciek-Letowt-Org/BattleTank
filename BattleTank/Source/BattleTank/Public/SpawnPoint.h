@@ -9,10 +9,6 @@ class BATTLETANK_API USpawnPoint final : public USceneComponent
 {
     GENERATED_BODY()
 
-protected:
-    // Called when the game starts
-    virtual void BeginPlay() override;
-
 public:
     // Sets default values for this component's properties
     USpawnPoint();
@@ -20,6 +16,14 @@ public:
     virtual void TickComponent(float DeltaTime, ELevelTick TickType,
                                FActorComponentTickFunction* ThisTickFunction) override;
 
+    AActor* GetSpawnedActor() const
+    {
+        return SpawnedActor;
+    }
+
+protected:
+    // Called when the game starts
+    virtual void BeginPlay() override;
 private:
     UFUNCTION(BlueprintCallable, Category="Setup") // created this method for the construction script in the blueprint
     void SetSpawnClassBluePrint(const TSubclassOf<AActor> SpawnClassBP)
@@ -30,4 +34,5 @@ private:
     // ------ members / properties -------------------------------
     UPROPERTY(EditDefaultsOnly, Category="Setup")
     TSubclassOf<AActor> SpawnClass;
+    AActor* SpawnedActor = nullptr;
 };

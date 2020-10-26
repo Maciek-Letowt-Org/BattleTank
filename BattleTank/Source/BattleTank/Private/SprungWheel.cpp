@@ -14,14 +14,12 @@ ASprungWheel::ASprungWheel()
 
     Axle = CreateDefaultSubobject<USphereComponent>(FName("Axle"));
     Axle->SetupAttachment(MassAxleConstraint);
-    
+
     Wheel = CreateDefaultSubobject<USphereComponent>(FName("Wheel"));
     Wheel->SetupAttachment(Axle);
-    
+
     AxleWheelConstraint = CreateDefaultSubobject<UPhysicsConstraintComponent>(FName("AxleWheelConstraint"));
     AxleWheelConstraint->SetupAttachment(Axle);
-
-
 }
 
 // Called when the game starts or when spawned
@@ -54,4 +52,9 @@ void ASprungWheel::SetupConstraint()
 void ASprungWheel::Tick(const float DeltaTime)
 {
     Super::Tick(DeltaTime);
+}
+
+void ASprungWheel::AddDrivingForce(const float ForceMagnitude) const
+{
+    Wheel->AddForce(Axle->GetForwardVector() * ForceMagnitude);
 }

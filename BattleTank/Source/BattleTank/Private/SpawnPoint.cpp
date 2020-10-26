@@ -19,14 +19,14 @@ void USpawnPoint::BeginPlay()
     Super::BeginPlay();
 
     // add a sprung wheel
-    AActor* NewActor = GetWorld()->SpawnActorDeferred<AActor>(SpawnClass, GetComponentTransform());
-    if (!NewActor)
+    SpawnedActor = GetWorld()->SpawnActorDeferred<AActor>(SpawnClass, GetComponentTransform());
+    if (!SpawnedActor)
     {
         UE_LOG(LogTemp, Warning, TEXT("tank %s cannot spawn a wheel"), *GetOwner()->GetName());
         return;
     }
-    NewActor->AttachToComponent(this, FAttachmentTransformRules::KeepWorldTransform);
-    UGameplayStatics::FinishSpawningActor(NewActor, GetComponentTransform());
+    SpawnedActor->AttachToComponent(this, FAttachmentTransformRules::KeepWorldTransform);
+    UGameplayStatics::FinishSpawningActor(SpawnedActor, GetComponentTransform());
 }
 
 
